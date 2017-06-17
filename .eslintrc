@@ -1,0 +1,23 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "template-tag-spacing": ["error", "always"],
+    "space-before-blocks": "error",
+    "space-before-function-paren": ["error", "always"],
+    "sort-vars": "error",
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "no-tabs": "error",
+    "max-len": ["error", 120],
+    "jsx-a11y/img-has-alt": [0]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "booking-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-client": "^1.4.2",
+    "graphql-tag": "^2.4.0",
+    "react": "^15.6.1",
+    "react-apollo": "^1.4.2",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "enzyme": "^2.8.2",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "react-scripts": "1.0.7",
+    "react-test-renderer": "^15.6.1",
+    "regenerator-runtime": "^0.10.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

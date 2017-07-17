@@ -16,8 +16,12 @@
     "sort-vars": "error",
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true
+    }],
     "no-tabs": "error",
     "max-len": ["error", 120],
-    "jsx-a11y/img-has-alt": [0]
+    "jsx-a11y/img-has-alt": [0],
+    "react/jsx-filename-extension": [0]
   }
 }

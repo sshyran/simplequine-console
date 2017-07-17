@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+// 3rd party modules
+import React from 'react';
+import { Route } from 'react-router-dom';
+
+// App modules
+import HomeContainer from './views/home/views/container';
+import RegisterContainer from './views/register/views/container';
+import SuccessContainer from './views/register/views/success/container';
+import AppContainer from './views/app/views/container';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="full-height-width">
+    <Route exact path="/" component={HomeContainer} />
+    <Route exact path="/register" component={RegisterContainer} />
+    <Route exact path="/register/success" component={SuccessContainer} />
+    <Route path="/app" component={AppContainer} />
+  </div>
+);
 
 export default App;

@@ -96,6 +96,7 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('email', {
+            validateTrigger: ['onBlur'],
             rules: [{
               type: 'email', message: 'The input is not valid E-mail!',
             }, {

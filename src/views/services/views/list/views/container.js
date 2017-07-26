@@ -12,6 +12,9 @@ const ServiceListContainer = compose(
     name: 'deleteServiceMutation',
   }),
   graphql(servicesQuery, {
+    options: {
+      fetchPolicy: 'network-only',
+    },
     props: ({ data: { user, ...rest } }) => {
       if (!user) {
         return { data: { ...rest } };

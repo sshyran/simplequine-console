@@ -8,6 +8,10 @@ import appointmentsQuery from '../../../shared/queries/appointments';
 
 const ScheduleContainer = compose(
   graphql(appointmentsQuery, {
+    options: {
+      fetchPolicy: 'cache-and-network',
+      pollInterval: 300000,
+    },
     props: ({ data: { user, ...rest } }) => {
       if (!user) {
         return { data: { ...rest } };

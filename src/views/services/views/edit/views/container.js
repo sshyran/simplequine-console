@@ -13,6 +13,7 @@ const UpdateServiceContainer = compose(
   }),
   graphql(serviceQuery, {
     options: props => ({
+      fetchPolicy: 'network-only',
       variables: {
         serviceId: props.match.params.serviceId,
       },

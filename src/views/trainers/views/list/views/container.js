@@ -12,6 +12,9 @@ const TrainerListContainer = compose(
     name: 'deleteTrainerMutation',
   }),
   graphql(trainersQuery, {
+    options: {
+      fetchPolicy: 'network-only',
+    },
     props: ({ data: { user, ...rest } }) => {
       if (!user) {
         return { data: { ...rest } };

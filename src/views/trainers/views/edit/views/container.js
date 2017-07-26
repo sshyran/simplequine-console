@@ -13,6 +13,7 @@ const UpdateTrainerContainer = compose(
   }),
   graphql(trainerQuery, {
     options: props => ({
+      fetchPolicy: 'network-only',
       variables: {
         trainerId: props.match.params.trainerId,
       },

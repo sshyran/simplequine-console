@@ -1,6 +1,7 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Form, Input, Button, TimePicker, Checkbox } from 'antd';
 
 const FormItem = Form.Item;
@@ -136,7 +137,12 @@ class TrainerForm extends Component {
           {getFieldDecorator('startsAt', {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
           })(
-            <TimePicker format="HH:mm" disabledMinutes={disabledMinutes} hideDisabledOptions />,
+            <TimePicker
+              format="HH:mm"
+              defaultOpenValue={moment().startOf('day').add(8, 'hours')}
+              disabledMinutes={disabledMinutes}
+              hideDisabledOptions
+            />,
           )}
         </FormItem>
         <FormItem
@@ -146,7 +152,12 @@ class TrainerForm extends Component {
           {getFieldDecorator('endsAt', {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
           })(
-            <TimePicker format="HH:mm" disabledMinutes={disabledMinutes} hideDisabledOptions />,
+            <TimePicker
+              format="HH:mm"
+              defaultOpenValue={moment().startOf('day').add(8, 'hours').add(15, 'minutes')}
+              disabledMinutes={disabledMinutes}
+              hideDisabledOptions
+            />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

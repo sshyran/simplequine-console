@@ -144,7 +144,12 @@ class TrainerForm extends Component {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
             initialValue: moment().startOf('day').add(trainer.schedules[0].startsAt, 'minutes'),
           })(
-            <TimePicker format="HH:mm" disabledMinutes={disabledMinutes} hideDisabledOptions />,
+            <TimePicker
+              format="HH:mm"
+              defaultOpenValue={moment().startOf('day').add(8, 'hours')}
+              disabledMinutes={disabledMinutes}
+              hideDisabledOptions
+            />,
           )}
         </FormItem>
         <FormItem
@@ -155,7 +160,12 @@ class TrainerForm extends Component {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
             initialValue: moment().startOf('day').add(trainer.schedules[0].endsAt, 'minutes'),
           })(
-            <TimePicker format="HH:mm" disabledMinutes={disabledMinutes} hideDisabledOptions />,
+            <TimePicker
+              format="HH:mm"
+              defaultOpenValue={moment().startOf('day').add(8, 'hours').add(15, 'minutes')}
+              disabledMinutes={disabledMinutes}
+              hideDisabledOptions
+            />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

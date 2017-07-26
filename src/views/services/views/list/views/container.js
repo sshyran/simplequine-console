@@ -17,9 +17,11 @@ const ServiceListContainer = compose(
         return { data: { ...rest } };
       }
 
+      const onlyActiveServices = user.services.filter(service => service.isActive);
+
       return {
         data: {
-          services: user.services,
+          services: onlyActiveServices,
           ...rest,
         },
       };

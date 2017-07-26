@@ -17,9 +17,11 @@ const TrainerListContainer = compose(
         return { data: { ...rest } };
       }
 
+      const onlyActiveTrainers = user.trainers.filter(trainer => trainer.isActive);
+
       return {
         data: {
-          trainers: user.trainers,
+          trainers: onlyActiveTrainers,
           ...rest,
         },
       };

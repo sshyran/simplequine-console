@@ -3,17 +3,19 @@
 import { gql } from 'react-apollo';
 
 const deleteTrainer = gql`
-  mutation deleteTrainer (
-  $trainerId: ID!,
+  mutation updateTrainer (
+    $trainerId: ID!,
   ){
-    deleteTrainer(
+    updateTrainer(
       id: $trainerId,
+      isActive: false
     ) {
       id
       email
       firstName
       lastName
       phoneNumber
+      isActive
       user {
         id
         trainers {

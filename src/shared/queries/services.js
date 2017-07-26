@@ -12,6 +12,7 @@ const servicesQuery = gql`
         duration
         id
         name
+        isActive
         maxParticipants
         price
       }

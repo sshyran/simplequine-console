@@ -10,6 +10,7 @@ const trainerQuery = gql`
       id
       lastName
       phoneNumber
+      isActive
       schedules {
         endsAt
         id

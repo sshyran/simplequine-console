@@ -38,6 +38,7 @@ const appointmentsQuery = gql`
             id
             firstName
             lastName
+            isActive
           }
         }
       }

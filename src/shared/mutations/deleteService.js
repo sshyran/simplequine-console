@@ -3,11 +3,12 @@
 import { gql } from 'react-apollo';
 
 const deleteService = gql`
-  mutation deleteService (
-  $serviceId: ID!,
+  mutation updateService (
+    $serviceId: ID!,
   ){
-    deleteService(
+    updateService(
       id: $serviceId,
+      isActive: false
     ) {
       currency
       description
@@ -15,6 +16,7 @@ const deleteService = gql`
       id
       name
       price
+      isActive
       user {
         id
         services {

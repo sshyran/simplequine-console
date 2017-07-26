@@ -106,6 +106,7 @@ class RegisterView extends Component {
       idToken: getStorageItem('auth0IdToken'),
       email: personalInfoForm.email,
       name: personalInfoForm.name,
+      daysInAdvance: personalInfoForm.daysInAdvance,
       services: [serviceForm],
       trainers: [trainerVariables],
     };

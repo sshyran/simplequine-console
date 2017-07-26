@@ -8,6 +8,7 @@ export const userIdQuery = gql`
       id
       email
       name
+      daysInAdvance
     }
   }
 `;

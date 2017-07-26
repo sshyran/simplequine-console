@@ -1,7 +1,7 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, InputNumber, Button } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -19,7 +19,7 @@ class EmailForm extends Component {
 
   render () {
     const { getFieldDecorator } = this.props.form;
-    const { email, name } = this.props.user;
+    const { email, name, daysInAdvance } = this.props.user;
 
     const formItemLayout = {
       labelCol: {
@@ -74,6 +74,25 @@ class EmailForm extends Component {
             <Input />,
           )}
         </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="How far in advance clients can book a ride? (days)"
+          hasFeedback
+        >
+          {getFieldDecorator('daysInAdvance', {
+            rules: [{
+              type: 'integer',
+              message: 'The input is not valid number!',
+              min: 1,
+              max: 180,
+            }, {
+              required: true, message: 'Please input number of days!',
+            }],
+            initialValue: daysInAdvance,
+          })(
+            <InputNumber min={1} max={180} />,
+          )}
+        </FormItem>
         <FormItem {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" size="large">Submit</Button>
         </FormItem>
@@ -91,6 +110,7 @@ EmailForm.propTypes = {
   user: PropTypes.shape({
     email: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    daysInAdvance: PropTypes.number.isRequired,
   }).isRequired,
 };
 

@@ -1,7 +1,7 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, InputNumber } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -55,6 +55,7 @@ class RegistrationForm extends Component {
 
     const initialEmail = this.getInitialValue('email');
     const initialName = this.getInitialValue('name');
+    const initialDaysInAdvance = this.getInitialValue('daysInAdvance');
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -89,6 +90,25 @@ class RegistrationForm extends Component {
             initialValue: initialName,
           })(
             <Input />,
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="How far in advance clients can book a ride? (days)"
+          hasFeedback
+        >
+          {getFieldDecorator('daysInAdvance', {
+            rules: [{
+              type: 'integer',
+              message: 'The input is not valid number!',
+              min: 1,
+              max: 180,
+            }, {
+              required: true, message: 'Please input number of days!',
+            }],
+            initialValue: initialDaysInAdvance,
+          })(
+            <InputNumber min={1} max={180} defaultValue={30} />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

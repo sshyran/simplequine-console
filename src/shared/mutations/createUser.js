@@ -7,6 +7,7 @@ const createUser = gql`
     $idToken: String!,
     $email: String!,
     $name: String!,
+    $daysInAdvance: Int!,
     $trainers: [UsertrainersTrainer!]!,
     $services: [UserservicesService!]!,
   ){
@@ -14,12 +15,14 @@ const createUser = gql`
       authProvider: {auth0: {idToken: $idToken}}
       email: $email
       name: $name
+      daysInAdvance: $daysInAdvance,
       trainers: $trainers
       services: $services
     ) {
       id
       email
       name
+      daysInAdvance
       trainers {
         id
         schedules {

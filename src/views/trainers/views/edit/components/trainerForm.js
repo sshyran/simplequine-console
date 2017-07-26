@@ -15,8 +15,12 @@ function range (start, end) {
   return result;
 }
 
-function disabledMinutes () {
-  return [].concat([], range(1, 15), range(16, 30), range(31, 45), range(46, 60));
+function disabledMinutes (h) {
+  const disabledMidnight = [];
+
+  if (h === 0) { disabledMidnight.push(0); }
+
+  return [].concat([], range(1, 15), range(16, 30), range(31, 45), range(46, 60), disabledMidnight);
 }
 
 const days = [

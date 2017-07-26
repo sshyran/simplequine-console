@@ -7,15 +7,18 @@ const updateUser = gql`
   $userId: ID!,
   $email: String,
   $name: String!,
+  $daysInAdvance: Int,
   ){
     updateUser(
       id: $userId,
       email: $email,
       name: $name,
+      daysInAdvance: $daysInAdvance,
     ) {
       id
       email
       name
+      daysInAdvance
     }
   }
 `;

@@ -132,7 +132,7 @@ class TrainerForm extends Component {
         >
           {getFieldDecorator('phoneNumber', {
             rules: [{
-              required: true, message: 'Please input phone number!', whitespace: true
+              required: true, message: 'Please input phone number!', whitespace: true,
             }, {
               max: 40, message: 'Phone number is too long!',
             }],

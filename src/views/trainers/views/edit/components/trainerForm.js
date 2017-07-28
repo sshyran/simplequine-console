@@ -80,7 +80,13 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('firstName', {
-            rules: [{ required: true, message: 'Please input first name!', whitespace: true }],
+            rules: [{
+              required: true,
+              message: 'Please input first name!',
+              whitespace: true,
+            }, {
+              max: 100, message: 'Input is too long!',
+            }],
             initialValue: trainer.firstName,
           })(
             <Input />,
@@ -92,7 +98,13 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('lastName', {
-            rules: [{ required: true, message: 'Please input last name!', whitespace: true }],
+            rules: [{
+              required: true,
+              message: 'Please input last name!',
+              whitespace: true,
+            }, {
+              max: 100, message: 'Input is too long!',
+            }],
             initialValue: trainer.lastName,
           })(
             <Input />,
@@ -109,6 +121,8 @@ class TrainerForm extends Component {
               type: 'email', message: 'The input is not valid E-mail!',
             }, {
               required: true, message: 'Please input E-mail!',
+            }, {
+              max: 254, message: 'Your email address is too long!',
             }],
             initialValue: trainer.email,
           })(
@@ -121,7 +135,11 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('phoneNumber', {
-            rules: [{ required: true, message: 'Please input phone number!', whitespace: true }],
+            rules: [{
+              required: true, message: 'Please input phone number!', whitespace: true,
+            }, {
+              max: 40, message: 'Phone number is too long!',
+            }],
             initialValue: trainer.phoneNumber,
           })(
             <Input type="tel" />,

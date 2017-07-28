@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { Col, Row, Layout, Steps } from 'antd';
+import { Col, Row, Layout, Steps, message } from 'antd';
 
 // App modules
 import RegistrationForm from '../components/registerForm';
@@ -28,7 +28,7 @@ class RegisterView extends Component {
   getSteps = () => (
     [
       {
-        title: 'Personal info',
+        title: 'Business info',
         content: (
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
@@ -38,11 +38,11 @@ class RegisterView extends Component {
         ),
       },
       {
-        title: 'Services',
+        title: 'Lessons',
         content: (
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <ServiceForm onSubmit={this.saveServiceForm} onPreviousClick={this.prev} />
+              <ServiceForm onSubmit={this.saveServiceForm} formState={this.state.serviceForm} onPreviousClick={this.prev} />
             </Col>
           </Row>
         ),
@@ -125,7 +125,7 @@ class RegisterView extends Component {
         history.push('/register/success');
       }).catch((e) => {
         console.error(e); // eslint-disable-line no-console
-        history.push('/');
+        message.error('Registraion process failed!', 5);
       });
   };
 

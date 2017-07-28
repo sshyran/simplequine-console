@@ -51,11 +51,9 @@ class TrainerForm extends Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 14 },
       },
     };
     const tailFormItemLayout = {
@@ -64,22 +62,24 @@ class TrainerForm extends Component {
           span: 24,
           offset: 0,
         },
-        sm: {
-          span: 14,
-          offset: 8,
-        },
       },
     };
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} layout={'vertical'}>
         <FormItem
           {...formItemLayout}
           label="First name"
           hasFeedback
         >
           {getFieldDecorator('firstName', {
-            rules: [{ required: true, message: 'Please input first name!', whitespace: true }],
+            rules: [{ 
+              required: true,
+              message: 'Please input first name!',
+              whitespace: true,
+            }, {
+              max: 100, message: 'Input is too long!',
+            }],
           })(
             <Input />,
           )}
@@ -90,7 +90,13 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('lastName', {
-            rules: [{ required: true, message: 'Please input last name!', whitespace: true }],
+            rules: [{ 
+              required: true,
+              message: 'Please input last name!',
+              whitespace: true,
+            }, {
+              max: 100, message: 'Input is too long!',
+            }],
           })(
             <Input />,
           )}
@@ -106,6 +112,8 @@ class TrainerForm extends Component {
               type: 'email', message: 'The input is not valid E-mail!',
             }, {
               required: true, message: 'Please input E-mail!',
+            }, {
+              max: 254, message: 'Your email address is too long!',
             }],
           })(
             <Input />,
@@ -117,7 +125,11 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('phoneNumber', {
-            rules: [{ required: true, message: 'Please input phone number!', whitespace: true }],
+            rules: [{
+              required: true, message: 'Please input phone number!', whitespace: true 
+            }, {
+              max: 40, message: 'Phone number is too long!',
+            }],
           })(
             <Input type="tel" />,
           )}
@@ -161,7 +173,7 @@ class TrainerForm extends Component {
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" size="large">Submit</Button>
+          <Button type="primary" htmlType="submit" size="large" style={{ marginRight: '15px' }}>Submit</Button>
           <Button size="large" onClick={this.props.onPreviousClick}>Previous</Button>
         </FormItem>
       </Form>

@@ -1,7 +1,7 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, InputNumber } from 'antd';
+import { Form, Input, Button, InputNumber, Tooltip, Icon } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -33,11 +33,9 @@ class RegistrationForm extends Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 6 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 14 },
       },
     };
     const tailFormItemLayout = {
@@ -46,19 +44,15 @@ class RegistrationForm extends Component {
           span: 24,
           offset: 0,
         },
-        sm: {
-          span: 14,
-          offset: 6,
-        },
       },
     };
 
     const initialEmail = this.getInitialValue('email');
     const initialName = this.getInitialValue('name');
-    const initialDaysInAdvance = this.getInitialValue('daysInAdvance');
+    const initialDaysInAdvance = this.getInitialValue('daysInAdvance') || 30;
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} layout={'vertical'}>
         <FormItem
           {...formItemLayout}
           label="E-mail"
@@ -70,6 +64,8 @@ class RegistrationForm extends Component {
               type: 'email', message: 'The input is not valid E-mail!',
             }, {
               required: true, message: 'Please input your E-mail!',
+            }, {
+              max: 254, message: 'Your email address is too long!',
             }],
             initialValue: initialEmail,
           })(
@@ -78,7 +74,14 @@ class RegistrationForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Business name"
+          label={(
+            <span>
+              Business name&nbsp;
+              <Tooltip title="What is the name of your equestrian center? E.g Sun Valley Equestrian Center">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('name', {
@@ -94,7 +97,14 @@ class RegistrationForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="How far in advance clients can book a ride? (days)"
+          label={(
+            <span>
+              How far in advance clients can book a ride?&nbsp;
+              <Tooltip title="How many days in advance can clients book a ride?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('daysInAdvance', {
@@ -108,7 +118,7 @@ class RegistrationForm extends Component {
             }],
             initialValue: initialDaysInAdvance,
           })(
-            <InputNumber min={1} max={180} defaultValue={30} />,
+            <InputNumber min={1} max={180} />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

@@ -18,7 +18,7 @@ class LoginButton extends Component {
 
     this.options = {
       initialScreen: props.initialScreen,
-      allowedConnections: ['google-oauth2', 'twitter'],
+      allowedConnections: ['google-oauth2', 'facebook'],
       auth: {
         responseType: 'token id_token',
       },

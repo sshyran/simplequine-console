@@ -1,9 +1,12 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, InputNumber } from 'antd';
+import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';
+
+import { currencyCodes } from '../../../../../shared/constants/index';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 class ServiceForm extends Component {
   handleSubmit = (e) => {
@@ -48,11 +51,18 @@ class ServiceForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         <FormItem
           {...formItemLayout}
-          label="Name"
+          label={(
+            <span>
+              Name&nbsp;
+              <Tooltip title="What is the name of a lesson that you want to offer? E.g 60min group">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('name', {
-            rules: [{ required: true, message: 'Please input name of a service!', whitespace: true }],
+            rules: [{ required: true, message: 'Please input name of a lesson!', whitespace: true }],
             initialValue: service.name,
           })(
             <Input />,
@@ -60,71 +70,129 @@ class ServiceForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Duration in minutes"
+          label={(
+            <span>
+              Duration&nbsp;
+              <Tooltip title="How many minutes does this lesson take?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('duration', {
             rules: [{
-              type: 'integer', message: 'The input is not valid number!',
+              type: 'integer',
+              message: 'The input is not valid number!',
+              min: 1,
+              max: 1440,
             }, {
               required: true, message: 'Please input duration!',
             }],
             initialValue: service.duration,
           })(
-            <InputNumber />,
+            <InputNumber min={1} max={1440} />,
           )}
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Max participants"
+          label={(
+            <span>
+              Max participants&nbsp;
+              <Tooltip title="How many people can take part in it?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('maxParticipants', {
             rules: [{
-              type: 'integer', message: 'The input is not valid number!',
+              type: 'integer',
+              message: 'The input is not valid number!',
+              min: 1,
+              max: 99,
             }, {
               required: true, message: 'Please input max number of participants!',
             }],
             initialValue: service.maxParticipants,
           })(
-            <InputNumber min={1} max={100} />,
+            <InputNumber min={1} max={99} />,
           )}
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="price"
+          label={(
+            <span>
+              Price&nbsp;
+              <Tooltip title="How mouch does it cost for a one lesson of this type?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('price', {
             rules: [{
-              type: 'integer', message: 'The input is not valid number!',
+              type: 'integer',
+              message: 'The input is not valid number!',
+              min: 1,
+              max: 1000000,
             }, {
               required: true, message: 'Please input price!',
             }],
             initialValue: service.price,
           })(
-            <InputNumber />,
+            <InputNumber min={1} max={1000000} />,
           )}
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Currency"
+          label={(
+            <span>
+              Currency&nbsp;
+              <Tooltip title="Which currency do you accept?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('currency', {
             rules: [{ required: true, message: 'Please input currency!', whitespace: true }],
             initialValue: service.currency,
           })(
-            <Input />,
+            <Select
+              showSearch
+              placeholder="Select a currency"
+              optionFilterProp="children"
+              filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+            >
+              {currencyCodes.map(code => (
+                <Option key={code} value={code}>{code}</Option>
+              ))}
+            </Select>,
           )}
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="description"
+          label={(
+            <span>
+              Description&nbsp;
+              <Tooltip title="Write a description of a lesson which will be displayed for the clients before they book it.">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('description', {
-            rules: [{ required: false, message: 'Please input description!', whitespace: true }],
+            rules: [{
+              required: false,
+              message: 'Description is too long!',
+              whitespace: true,
+              max: 500,
+            }],
             initialValue: service.description,
           })(
             <Input type="textarea" rows={4} />,

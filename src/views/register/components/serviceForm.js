@@ -1,7 +1,7 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';
+import { Form, Input, Button, InputNumber, Tooltip, Icon, Select, Alert } from 'antd';
 
 import { currencyCodes } from '../../../shared/constants/index';
 
@@ -59,6 +59,12 @@ class ServiceForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit} layout={'vertical'}>
+        <Alert
+          message="Fill the form in order to add your very first lesson type to Simplequine!"
+          type="info"
+          showIcon
+          style={{ marginBottom: '24px' }}
+        />
         <FormItem
           {...formItemLayout}
           label={(
@@ -197,7 +203,7 @@ class ServiceForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('description', {
-            rules: [{ 
+            rules: [{
               required: false,
               message: 'Description is too long!',
               whitespace: true,

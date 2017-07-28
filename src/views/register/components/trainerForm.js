@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Form, Input, Button, TimePicker, Checkbox } from 'antd';
+import { Form, Input, Button, TimePicker, Checkbox, Alert } from 'antd';
 
 const FormItem = Form.Item;
 const CheckboxGroup = Checkbox.Group;
@@ -67,13 +67,19 @@ class TrainerForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit} layout={'vertical'}>
+        <Alert
+          message="Fill the form in order to add your very first trainer to Simplequine!"
+          type="info"
+          showIcon
+          style={{ marginBottom: '24px' }}
+        />
         <FormItem
           {...formItemLayout}
           label="First name"
           hasFeedback
         >
           {getFieldDecorator('firstName', {
-            rules: [{ 
+            rules: [{
               required: true,
               message: 'Please input first name!',
               whitespace: true,
@@ -90,7 +96,7 @@ class TrainerForm extends Component {
           hasFeedback
         >
           {getFieldDecorator('lastName', {
-            rules: [{ 
+            rules: [{
               required: true,
               message: 'Please input last name!',
               whitespace: true,
@@ -126,7 +132,7 @@ class TrainerForm extends Component {
         >
           {getFieldDecorator('phoneNumber', {
             rules: [{
-              required: true, message: 'Please input phone number!', whitespace: true 
+              required: true, message: 'Please input phone number!', whitespace: true
             }, {
               max: 40, message: 'Phone number is too long!',
             }],

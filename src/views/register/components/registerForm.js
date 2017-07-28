@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, InputNumber, Tooltip, Icon } from 'antd';
 
+import { getStorageItem } from '../../../shared/services/localStorage';
+
 const FormItem = Form.Item;
 
 class RegistrationForm extends Component {
@@ -47,9 +49,18 @@ class RegistrationForm extends Component {
       },
     };
 
-    const initialEmail = this.getInitialValue('email');
     const initialName = this.getInitialValue('name');
     const initialDaysInAdvance = this.getInitialValue('daysInAdvance') || 30;
+
+    let initialEmail;
+
+    if (this.getInitialValue('email')) {
+      initialEmail = this.getInitialValue('email');
+    }
+
+    if (getStorageItem('auth0Email') !== 'undefined') {
+      initialEmail = getStorageItem('auth0Email');
+    }
 
     return (
       <Form onSubmit={this.handleSubmit} layout={'vertical'}>

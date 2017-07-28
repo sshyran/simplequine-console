@@ -8,8 +8,9 @@ import { Col, Row, Layout, Steps, message } from 'antd';
 import RegistrationForm from '../components/registerForm';
 import ServiceForm from '../components/serviceForm';
 import TrainerForm from '../components/trainerForm';
-import { getStorageItem } from '../../../shared/services/localStorage';
+import { getStorageItem, removeStorageItem } from '../../../shared/services/localStorage';
 import { userIdQuery } from '../../../shared/queries/user';
+
 
 const { Header, Content } = Layout;
 const Step = Steps.Step;
@@ -122,6 +123,7 @@ class RegisterView extends Component {
     })
       .then((response) => {
         console.log(response); // eslint-disable-line no-console
+        removeStorageItem('auth0Email');
         history.push('/register/success');
       }).catch((e) => {
         console.error(e); // eslint-disable-line no-console

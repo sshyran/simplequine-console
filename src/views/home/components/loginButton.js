@@ -20,6 +20,9 @@ class LoginButton extends Component {
       initialScreen: props.initialScreen,
       allowedConnections: ['google-oauth2', 'facebook'],
       auth: {
+        params: {
+          scope: 'openid email',
+        },
         responseType: 'token id_token',
       },
     };
@@ -35,6 +38,7 @@ class LoginButton extends Component {
       setStorageItem('auth0AccessToken', authResult.accessToken);
       setStorageItem('auth0IdToken', authResult.idToken);
       setStorageItem('auth0ExpiresAt', expiresAt);
+      setStorageItem('auth0Email', authResult.idTokenPayload.email);
       this.props.history.replace('/register');
     }
   };

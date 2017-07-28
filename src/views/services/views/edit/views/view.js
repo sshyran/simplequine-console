@@ -80,7 +80,7 @@ class UpdateServiceView extends Component {
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
-            <Col xs={22} sm={16} md={10} style={{ margin: '0 auto 40px auto' }}>
+            <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
               <ServiceForm onSubmit={this.updateService} service={service} />
             </Col>
           </Row>

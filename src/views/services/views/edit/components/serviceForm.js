@@ -27,11 +27,9 @@ class ServiceForm extends Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
       },
     };
     const tailFormItemLayout = {
@@ -40,15 +38,11 @@ class ServiceForm extends Component {
           span: 24,
           offset: 0,
         },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
       },
     };
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} layout={'vertical'}>
         <FormItem
           {...formItemLayout}
           label={(

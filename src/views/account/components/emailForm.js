@@ -27,11 +27,9 @@ class EmailForm extends Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 14 },
       },
     };
     const tailFormItemLayout = {
@@ -40,25 +38,24 @@ class EmailForm extends Component {
           span: 24,
           offset: 0,
         },
-        sm: {
-          span: 14,
-          offset: 8,
-        },
       },
     };
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} layout={'vertical'}>
         <FormItem
           {...formItemLayout}
           label="E-mail"
           hasFeedback
         >
           {getFieldDecorator('email', {
+            validateTrigger: ['onBlur'],
             rules: [{
               type: 'email', message: 'The input is not valid E-mail!',
             }, {
-              required: true, message: 'Please input E-mail!',
+              required: true, message: 'Please input your E-mail!',
+            }, {
+              max: 254, message: 'Your email address is too long!',
             }],
             initialValue: email,
           })(
@@ -67,11 +64,22 @@ class EmailForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Business name"
+          label={(
+            <span>
+              Business name&nbsp;
+              <Tooltip title="What is the name of your equestrian center? E.g Sun Valley Equestrian Center">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('name', {
-            rules: [{ required: true, message: 'Please input business name!', whitespace: true }],
+            rules: [{
+              type: 'string', message: 'The input is not valid!',
+            }, {
+              required: true, message: 'Please input your business name!',
+            }],
             initialValue: name,
           })(
             <Input />,
@@ -108,7 +116,14 @@ class EmailForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="How far in advance clients can book a ride? (days)"
+          label={(
+            <span>
+              How far in advance clients can book a ride?&nbsp;
+              <Tooltip title="How many days in advance can clients book a ride?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
           hasFeedback
         >
           {getFieldDecorator('daysInAdvance', {

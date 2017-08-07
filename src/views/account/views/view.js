@@ -76,7 +76,7 @@ class CreateTrainerView extends Component {
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
-            <Col xs={22} sm={16} md={10} style={{ margin: '0 auto 40px auto' }}>
+            <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', flexFlow: 'column' }}>
               <h3 style={{ textAlign: 'center' }}>URL of your booking page:</h3>
               <a
                 style={{
@@ -93,8 +93,7 @@ class CreateTrainerView extends Component {
                 {`https://book.horsebitmedia.com/${user.id}`}
               </a>
             </Col>
-            <Col xs={22} sm={16} md={10} style={{ margin: '0 auto 20px auto' }}>
-              <h3 style={{ marginBottom: '20px', textAlign: 'center' }}>Update your account :</h3>
+            <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
               <EmailForm onSubmit={this.updateUser} user={{ email: user.email, name: user.name, daysInAdvance: user.daysInAdvance, timeZoneName: user.timeZoneName }} />
             </Col>
           </Row>

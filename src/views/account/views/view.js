@@ -17,13 +17,14 @@ const openNotificationWithIcon = (type, message, description) => {
 };
 
 class CreateTrainerView extends Component {
-  updateUser = ({ email, name, daysInAdvance }) => {
+  updateUser = ({ email, name, daysInAdvance, timeZoneName }) => {
     const { updateUserMutation, history, data } = this.props;
 
     const variables = {
       email,
       name,
       daysInAdvance,
+      timeZoneName,
       userId: data.user.id,
     };
 
@@ -94,7 +95,7 @@ class CreateTrainerView extends Component {
             </Col>
             <Col xs={22} sm={16} md={10} style={{ margin: '0 auto 20px auto' }}>
               <h3 style={{ marginBottom: '20px', textAlign: 'center' }}>Update your account :</h3>
-              <EmailForm onSubmit={this.updateUser} user={{ email: user.email, name: user.name, daysInAdvance: user.daysInAdvance }} />
+              <EmailForm onSubmit={this.updateUser} user={{ email: user.email, name: user.name, daysInAdvance: user.daysInAdvance, timeZoneName: user.timeZoneName }} />
             </Col>
           </Row>
         </Content>

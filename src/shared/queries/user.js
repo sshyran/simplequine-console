@@ -9,6 +9,7 @@ export const userIdQuery = gql`
       email
       name
       daysInAdvance
+      timeZoneName
     }
   }
 `;

@@ -1,9 +1,11 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, InputNumber, Button } from 'antd';
+import * as moment from 'moment-timezone';
+import { Form, Input, InputNumber, Button, Tooltip, Icon, Select } from 'antd';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 class EmailForm extends Component {
   handleSubmit = (e) => {
@@ -19,7 +21,8 @@ class EmailForm extends Component {
 
   render () {
     const { getFieldDecorator } = this.props.form;
-    const { email, name, daysInAdvance } = this.props.user;
+    const { email, name, daysInAdvance, timeZoneName } = this.props.user;
+    const timeZoneNames = moment.tz.names();
 
     const formItemLayout = {
       labelCol: {
@@ -76,6 +79,35 @@ class EmailForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
+          label={(
+            <span>
+              Time zone&nbsp;
+              <Tooltip title="In which time zone is your center located?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
+          hasFeedback
+        >
+          {getFieldDecorator('timeZoneName', {
+            rules: [{
+              type: 'string', message: 'The input is not valid!',
+            }, {
+              required: true, message: 'Please specify your time zone!',
+            }],
+            initialValue: timeZoneName,
+          })(
+            <Select>
+              {
+                timeZoneNames.map(timeZone => (
+                  <Option key={timeZone} value={timeZone}>{timeZone}</Option>
+                ))
+              }
+            </Select>,
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
           label="How far in advance clients can book a ride? (days)"
           hasFeedback
         >
@@ -111,6 +143,7 @@ EmailForm.propTypes = {
     email: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     daysInAdvance: PropTypes.number.isRequired,
+    timeZoneName: PropTypes.string.isRequired,
   }).isRequired,
 };
 

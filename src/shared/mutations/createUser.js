@@ -8,6 +8,7 @@ const createUser = gql`
     $email: String!,
     $name: String!,
     $daysInAdvance: Int!,
+    $timeZoneName: String!,
     $trainers: [UsertrainersTrainer!]!,
     $services: [UserservicesService!]!,
   ){
@@ -16,6 +17,7 @@ const createUser = gql`
       email: $email
       name: $name
       daysInAdvance: $daysInAdvance,
+      timeZoneName: $timeZoneName,
       trainers: $trainers
       services: $services
     ) {
@@ -23,6 +25,7 @@ const createUser = gql`
       email
       name
       daysInAdvance
+      timeZoneName
       trainers {
         id
         schedules {

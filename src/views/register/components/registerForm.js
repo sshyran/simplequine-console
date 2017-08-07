@@ -1,11 +1,13 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, InputNumber, Tooltip, Icon } from 'antd';
+import * as moment from 'moment-timezone';
+import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';
 
 import { getStorageItem } from '../../../shared/services/localStorage';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 class RegistrationForm extends Component {
   getInitialValue = (key) => {
@@ -49,10 +51,12 @@ class RegistrationForm extends Component {
       },
     };
 
+    const timeZoneNames = moment.tz.names();
     const initialName = this.getInitialValue('name');
     const initialDaysInAdvance = this.getInitialValue('daysInAdvance') || 30;
 
     let initialEmail;
+    let initialTimeZoneName;
 
     if (this.getInitialValue('email')) {
       initialEmail = this.getInitialValue('email');
@@ -60,6 +64,12 @@ class RegistrationForm extends Component {
 
     if (getStorageItem('auth0Email') !== 'undefined') {
       initialEmail = getStorageItem('auth0Email');
+    }
+
+    if (this.getInitialValue('timeZoneName')) {
+      initialTimeZoneName = this.getInitialValue('timeZoneName');
+    } else {
+      initialTimeZoneName = moment.tz.guess();
     }
 
     return (
@@ -104,6 +114,35 @@ class RegistrationForm extends Component {
             initialValue: initialName,
           })(
             <Input />,
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label={(
+            <span>
+              Time zone&nbsp;
+              <Tooltip title="In which time zone is your center located?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          )}
+          hasFeedback
+        >
+          {getFieldDecorator('timeZoneName', {
+            rules: [{
+              type: 'string', message: 'The input is not valid!',
+            }, {
+              required: true, message: 'Please specify your time zone!',
+            }],
+            initialValue: initialTimeZoneName,
+          })(
+            <Select>
+              {
+                timeZoneNames.map(timeZoneName => (
+                  <Option key={timeZoneName} value={timeZoneName}>{timeZoneName}</Option>
+                ))
+              }
+            </Select>,
           )}
         </FormItem>
         <FormItem

@@ -108,6 +108,7 @@ class RegisterView extends Component {
       email: personalInfoForm.email,
       name: personalInfoForm.name,
       daysInAdvance: personalInfoForm.daysInAdvance,
+      timeZoneName: personalInfoForm.timeZoneName,
       services: [serviceForm],
       trainers: [trainerVariables],
     };

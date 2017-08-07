@@ -1,6 +1,7 @@
 // 3rd party modules
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as moment from 'moment-timezone';
 import { Redirect, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 
@@ -29,6 +30,8 @@ const AppView = (props) => {
       <Redirect to="/" />
     );
   }
+
+  moment.tz.setDefault(props.data.user.timeZoneName);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>

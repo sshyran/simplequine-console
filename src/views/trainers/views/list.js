@@ -6,6 +6,8 @@ import { Col, Row, Layout, Card, Popconfirm, Button, Spin } from 'antd';
 import moment from 'moment';
 
 // App modules
+import HeaderText from '../../../shared/components/headerText';
+import FlexItem from '../../../shared/components/flexItem';
 
 const { Header, Content } = Layout;
 
@@ -37,7 +39,11 @@ class TrainerListView extends Component {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>TRAINER LIST</h4>
+            <FlexItem grow={1}>
+              <HeaderText>
+                TRAINER LIST
+              </HeaderText>
+            </FlexItem>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
@@ -64,7 +70,11 @@ class TrainerListView extends Component {
       <div>
         <div>
           <Header style={{ display: 'flex' }}>
-            <h4 style={{ flexGrow: '1', textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>TRAINER LIST</h4>
+            <FlexItem grow={1}>
+              <HeaderText>
+                TRAINER LIST
+              </HeaderText>
+            </FlexItem>
             <Link to="/app/trainers/create">
               <Button style={{ alignSelf: 'center' }} type="primary" icon="plus">Add trainer</Button>
             </Link>

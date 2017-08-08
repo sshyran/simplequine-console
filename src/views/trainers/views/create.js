@@ -6,6 +6,7 @@ import { Col, Row, Layout, Spin } from 'antd';
 
 // App modules
 import TrainerForm from '../components/form';
+import HeaderText from '../../../shared/components/headerText';
 
 const { Header, Content } = Layout;
 
@@ -45,7 +46,9 @@ class CreateTrainerView extends Component {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>CREATE TRAINER</h4>
+            <HeaderText>
+              CREATE TRAINER
+            </HeaderText>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
@@ -71,7 +74,9 @@ class CreateTrainerView extends Component {
     return (
       <div>
         <Header>
-          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>CREATE TRAINER</h4>
+          <HeaderText>
+            CREATE TRAINER
+          </HeaderText>
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>

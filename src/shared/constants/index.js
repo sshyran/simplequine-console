@@ -11,3 +11,8 @@ export const currencyCodes = [
   'USD', 'ZAR',
 ];
 
+export const colors = {
+  fontDark: '#2D2D2C',
+  fontGreen: '#76AC78',
+};
+

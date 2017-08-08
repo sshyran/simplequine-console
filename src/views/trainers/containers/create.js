@@ -3,12 +3,12 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 // App modules
-import CreateTrainerView from './view';
-import createTrainerWithSchedule from '../../../../../shared/mutations/createTrainer';
-import { userIdQuery } from '../../../../../shared/queries/user';
+import CreateTrainerView from '../views/create';
+import createMutation from '../network/createMutation';
+import { userIdQuery } from '../../../shared/queries/user';
 
 const CreateTrainerContainer = compose(
-  graphql(createTrainerWithSchedule, {
+  graphql(createMutation, {
     name: 'createTrainerMutation',
   }),
   graphql(userIdQuery),

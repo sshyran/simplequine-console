@@ -5,13 +5,13 @@ import { Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Spin } from 'antd';
 
 // App modules
-import TrainerForm from '../components/trainerForm';
+import TrainerForm from '../components/form';
 
 const { Header, Content } = Layout;
 
-class UpdateTrainerView extends Component {
-  updateTrainer = ({ firstName, lastName, phoneNumber, email, startsAt, endsAt, workingDays }) => {
-    const { updateTrainerMutation, history, match } = this.props;
+class CreateTrainerView extends Component {
+  createTrainer = ({ firstName, lastName, phoneNumber, email, startsAt, endsAt, workingDays }) => {
+    const { createTrainerMutation, history, data } = this.props;
 
     const scheduleVariables = {
       startsAt: (startsAt.hour() * 60) + startsAt.minute(),
@@ -24,11 +24,11 @@ class UpdateTrainerView extends Component {
       lastName,
       phoneNumber,
       email,
+      userId: data.user.id,
       schedules: [scheduleVariables],
-      trainerId: match.params.trainerId,
     };
 
-    updateTrainerMutation({ variables })
+    createTrainerMutation({ variables })
       .then((response) => {
         console.log(response); // eslint-disable-line no-console
         history.push('/app/trainers/list');
@@ -39,13 +39,13 @@ class UpdateTrainerView extends Component {
   };
 
   render () {
-    const { loading, error, trainer } = this.props.data;
+    const { loading, error, user } = this.props.data;
 
     if (loading) {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>UPDATE TRAINER</h4>
+            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>CREATE TRAINER</h4>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
@@ -62,22 +62,21 @@ class UpdateTrainerView extends Component {
       );
     }
 
-    if (!trainer) {
+    if (!user) {
       return (
         <Redirect to={'/'} />
       );
     }
 
     return (
-
       <div>
         <Header>
-          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>UPDATE TRAINER</h4>
+          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>CREATE TRAINER</h4>
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <TrainerForm onSubmit={this.updateTrainer} trainer={trainer} />
+              <TrainerForm onSubmit={this.createTrainer} />
             </Col>
           </Row>
         </Content>
@@ -86,23 +85,18 @@ class UpdateTrainerView extends Component {
   }
 }
 
-UpdateTrainerView.propTypes = {
+CreateTrainerView.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      trainerId: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
   data: PropTypes.shape({
-    trainer: PropTypes.shape({
+    user: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.shape(),
+    error: PropTypes.bool,
   }).isRequired,
-  updateTrainerMutation: PropTypes.func.isRequired,
+  createTrainerMutation: PropTypes.func.isRequired,
 };
 
-export default UpdateTrainerView;
+export default CreateTrainerView;

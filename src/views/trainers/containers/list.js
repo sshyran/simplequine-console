@@ -3,12 +3,12 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 // App modules
-import TrainerListView from './view';
-import trainersQuery from '../../../../../shared/queries/trainers';
-import deleteTrainerMutation from '../../../../../shared/mutations/deleteTrainer';
+import TrainerListView from '../views/list';
+import trainersQuery from '../network/trainersQuery';
+import deleteMutation from '../network/deleteMutation';
 
 const TrainerListContainer = compose(
-  graphql(deleteTrainerMutation, {
+  graphql(deleteMutation, {
     name: 'deleteTrainerMutation',
   }),
   graphql(trainersQuery, {
@@ -20,11 +20,9 @@ const TrainerListContainer = compose(
         return { data: { ...rest } };
       }
 
-      const onlyActiveTrainers = user.trainers.filter(trainer => trainer.isActive);
-
       return {
         data: {
-          trainers: onlyActiveTrainers,
+          trainers: user.trainers.filter(trainer => trainer.isActive),
           ...rest,
         },
       };

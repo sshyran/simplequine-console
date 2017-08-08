@@ -10,7 +10,7 @@
   ],
   "rules": {
     "indent": ["error", 2],
-    "template-tag-spacing": ["error", "always"],
+    "template-tag-spacing": [0],
     "space-before-blocks": "error",
     "space-before-function-paren": ["error", "always"],
     "sort-vars": "error",

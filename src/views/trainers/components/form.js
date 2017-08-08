@@ -1,19 +1,12 @@
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import { Form, Input, Button, TimePicker, Checkbox } from 'antd';
+import moment from 'moment';
+import { range } from 'ramda';
 
 const FormItem = Form.Item;
 const CheckboxGroup = Checkbox.Group;
-
-function range (start, end) {
-  const result = [];
-  for (let i = start; i < end; i++) {
-    result.push(i);
-  }
-  return result;
-}
 
 function disabledMinutes (h) {
   const disabledMidnight = [];
@@ -47,6 +40,7 @@ class TrainerForm extends Component {
 
   render () {
     const { getFieldDecorator } = this.props.form;
+    const initialValues = this.props.trainer;
 
     const formItemLayout = {
       labelCol: {
@@ -80,6 +74,7 @@ class TrainerForm extends Component {
             }, {
               max: 100, message: 'Input is too long!',
             }],
+            initialValue: initialValues.firstName,
           })(
             <Input />,
           )}
@@ -97,6 +92,7 @@ class TrainerForm extends Component {
             }, {
               max: 100, message: 'Input is too long!',
             }],
+            initialValue: initialValues.lastName,
           })(
             <Input />,
           )}
@@ -115,6 +111,7 @@ class TrainerForm extends Component {
             }, {
               max: 254, message: 'Your email address is too long!',
             }],
+            initialValue: initialValues.email,
           })(
             <Input />,
           )}
@@ -130,6 +127,7 @@ class TrainerForm extends Component {
             }, {
               max: 40, message: 'Phone number is too long!',
             }],
+            initialValue: initialValues.phoneNumber,
           })(
             <Input type="tel" />,
           )}
@@ -138,8 +136,9 @@ class TrainerForm extends Component {
           {getFieldDecorator('workingDays', {
             valuePropName: 'checked',
             rules: [{ type: 'array', required: true, message: 'Please select working days!' }],
+            initialValue: initialValues.schedules[0].workingDays,
           })(
-            <CheckboxGroup options={days} />,
+            <CheckboxGroup options={days} defaultValue={initialValues.schedules[0].workingDays} />,
           )}
         </FormItem>
         <FormItem
@@ -148,6 +147,7 @@ class TrainerForm extends Component {
         >
           {getFieldDecorator('startsAt', {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+            initialValue: moment().startOf('day').add(initialValues.schedules[0].startsAt, 'minutes'),
           })(
             <TimePicker
               format="HH:mm"
@@ -163,6 +163,7 @@ class TrainerForm extends Component {
         >
           {getFieldDecorator('endsAt', {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+            initialValue: moment().startOf('day').add(initialValues.schedules[0].endsAt, 'minutes'),
           })(
             <TimePicker
               format="HH:mm"
@@ -180,12 +181,39 @@ class TrainerForm extends Component {
   }
 }
 
+TrainerForm.defaultProps = {
+  trainer: {
+    email: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    schedules: [
+      {
+        endsAt: 960,
+        startsAt: 480,
+        workingDays: [1, 2, 3, 4, 5],
+      },
+    ],
+  },
+};
+
 TrainerForm.propTypes = {
   form: PropTypes.shape({
     getFieldDecorator: PropTypes.func.isRequired,
     validateFieldsAndScroll: PropTypes.func.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
+  trainer: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
+    schedules: PropTypes.arrayOf(PropTypes.shape({
+      endsAt: PropTypes.number.isRequired,
+      startsAt: PropTypes.number.isRequired,
+      workingDays: PropTypes.arrayOf(PropTypes.number).isRequired,
+    })).isRequired,
+  }).isRequired,
 };
 
 export default Form.create()(TrainerForm);

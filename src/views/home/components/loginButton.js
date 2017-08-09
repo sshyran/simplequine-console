@@ -38,6 +38,12 @@ class LoginButton extends Component {
         },
         responseType: 'token id_token',
       },
+      theme: {
+        primaryColor: '#76AC78',
+      },
+      languageDictionary: {
+        title: 'Simplequine',
+      },
     };
 
     this.lock = new Auth0Lock(this.clientId, this.domain, this.options);

@@ -29,28 +29,14 @@ const HomeContainer = styled('main')`
   }
 `;
 
-const HomeView = ({ data }) => {
-  if (data.loading) {
-    return (
-      <span>Loading!</span>
-    );
-  }
-
-  if (data.error) {
-    return (
-      <span>Error!</span>
-    );
-  }
-
-  return (
-    <HomeContainer>
-      <Hero />
-      <Action isLoggedIn={Boolean(data.user)} />
-      <About />
-      <Footer />
-    </HomeContainer>
-  );
-};
+const HomeView = ({ data }) => (
+  <HomeContainer>
+    <Hero />
+    <Action isLoggedIn={Boolean(data.user)} />
+    <About />
+    <Footer />
+  </HomeContainer>
+);
 
 HomeView.propTypes = {
   data: PropTypes.shape({

@@ -40,8 +40,6 @@ const createMutation = gql`
           }
         }
       }
-      createdAt
-      updatedAt
     }
   }
 `;

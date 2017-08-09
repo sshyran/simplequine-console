@@ -2,12 +2,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Col, Row, Layout, Card, Popconfirm, Button, Spin } from 'antd';
+import { Col, Row, Layout, Button, Spin } from 'antd';
 import moment from 'moment';
 
 // App modules
 import HeaderText from '../../../shared/components/headerText';
 import FlexItem from '../../../shared/components/flexItem';
+import TrainerBio from '../components/bio';
+import TrainerCard from '../components/card';
+import { getStartOfToday } from '../services/time';
 
 const { Header, Content } = Layout;
 
@@ -68,53 +71,37 @@ class TrainerListView extends Component {
 
     return (
       <div>
-        <div>
-          <Header style={{ display: 'flex' }}>
-            <FlexItem grow={1}>
-              <HeaderText>
+        <Header style={{ display: 'flex' }}>
+          <FlexItem grow={1}>
+            <HeaderText>
                 TRAINER LIST
               </HeaderText>
-            </FlexItem>
-            <Link to="/app/trainers/create">
-              <Button style={{ alignSelf: 'center' }} type="primary" icon="plus">Add trainer</Button>
-            </Link>
-          </Header>
-          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-            <Row gutter={16}>
-              {trainers.map(trainer => (
-                <Col key={trainer.id} xs={24} sm={12} md={8} style={{ marginBottom: '15px' }}>
-                  <Card
-                    title={`${trainer.firstName} ${trainer.lastName}`}
-                    bordered={false}
-                    extra={
-                      <div>
-                        <Popconfirm
-                          onConfirm={() => this.deleteTrainer(trainer.id)}
-                          title="Are you sure?"
-                          okText="Yes"
-                          cancelText="No"
-                        >
-                          <span style={{ marginRight: '15px', color: '#f04134', cursor: 'pointer' }}>Delete</span>
-                        </Popconfirm>
-                        <Link to={`/app/trainers/edit/${trainer.id}`}>
-                        Edit
-                      </Link>
-                      </div>
-                    }
-                  >
-                    <p>{`Email: ${trainer.email}`}</p>
-                    <p>{`Phone: ${trainer.phoneNumber}`}</p>
-                    <p>{`Working days: ${this.prettifyWorkingDay(trainer.schedules[0].workingDays)}`}</p>
-                    <p>{`Working hours:
-                      ${moment().startOf('day').add(trainer.schedules[0].startsAt, 'minutes').format('HH:mm')} -
-                      ${moment().startOf('day').add(trainer.schedules[0].endsAt, 'minutes').format('HH:mm')}`}
-                    </p>
-                  </Card>
-                </Col>
+          </FlexItem>
+          <Link to="/app/trainers/create">
+            <Button style={{ alignSelf: 'center' }} type="primary" icon="plus">Add trainer</Button>
+          </Link>
+        </Header>
+        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+          <Row gutter={16}>
+            {trainers.map(trainer => (
+              <Col key={trainer.id} xs={24} sm={12} md={8} style={{ marginBottom: '15px' }}>
+                <TrainerCard
+                  actionHandler={() => this.deleteTrainer(trainer.id)}
+                  linkAddress={`/app/trainers/edit/${trainer.id}`}
+                  title={`${trainer.firstName} ${trainer.lastName}`}
+                >
+                  <TrainerBio
+                    email={trainer.email}
+                    phoneNumber={trainer.phoneNumber}
+                    workingDays={this.prettifyWorkingDay(trainer.schedules[0].workingDays)}
+                    startsAt={getStartOfToday().add(trainer.schedules[0].startsAt, 'minutes').format('HH:mm')}
+                    endsAt={getStartOfToday().add(trainer.schedules[0].endsAt, 'minutes').format('HH:mm')}
+                  />
+                </TrainerCard>
+              </Col>
               ))}
-            </Row>
-          </Content>
-        </div>
+          </Row>
+        </Content>
       </div>
     );
   }

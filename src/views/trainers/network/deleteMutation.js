@@ -26,8 +26,6 @@ const deleteMutation = gql`
           phoneNumber
         }
       }
-      createdAt
-      updatedAt
     }
   }
 `;

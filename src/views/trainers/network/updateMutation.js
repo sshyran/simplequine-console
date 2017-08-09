@@ -43,8 +43,6 @@ const updateTrainer = gql`
           }
         }
       }
-      createdAt
-      updatedAt
     }
   }
 `;

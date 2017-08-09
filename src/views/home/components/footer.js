@@ -34,9 +34,9 @@ const SocialIcon = styled('img')`
 const Footer = () => (
   <Container>
     <div>
-      <SocialIcon src="http://via.placeholder.com/28x28" alt="placeholder" />
-      <SocialIcon src="http://via.placeholder.com/28x28" alt="placeholder" />
-      <SocialIcon src="http://via.placeholder.com/28x28" alt="placeholder" />
+      <SocialIcon src="https://via.placeholder.com/28x28" alt="placeholder" />
+      <SocialIcon src="https://via.placeholder.com/28x28" alt="placeholder" />
+      <SocialIcon src="https://via.placeholder.com/28x28" alt="placeholder" />
     </div>
     <Copyright>&copy; HorseBitMedia 2017</Copyright>
   </Container>

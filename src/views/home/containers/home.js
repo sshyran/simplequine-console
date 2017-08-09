@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 // App modules
 import { userIdQuery } from '../../../shared/queries/user';
-import HomeView from './view';
+import HomeView from '../views/home';
 
 const HomeContainer = compose(
   graphql(userIdQuery, {

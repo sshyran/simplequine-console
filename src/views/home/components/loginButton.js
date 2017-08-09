@@ -2,12 +2,25 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
+import styled from 'styled-components';
 import Auth0Lock from 'auth0-lock';
 
 // App modules
 import { auth0ClientId, auth0Domain } from '../../../shared/constants/index';
 import { setStorageItem } from '../../../shared/services/localStorage';
+
+const ActionButton = styled('button')`
+  padding: 10px 16px;
+  font-size: 18px;
+  color: #FFFFFF;
+  background-color: ${props => (props.light ? '#CDE1CC' : '#76AC78')};
+  border: none;
+  cursor: pointer;
+
+  &:first-child {
+    margin-right: 32px;
+  }
+`;
 
 class LoginButton extends Component {
 
@@ -60,21 +73,22 @@ class LoginButton extends Component {
 
   render () {
     return (
-      <Button style={{ marginRight: '15px' }} type={'primary'} onClick={this.login}>
-        {this.props.label}
-      </Button>
+      <ActionButton onClick={this.login} light={this.props.light}>
+        {this.props.children}
+      </ActionButton>
     );
   }
 }
 
 LoginButton.defaultProps = {
   initialScreen: 'login',
-  label: 'Login',
+  light: false,
 };
 
 LoginButton.propTypes = {
   initialScreen: PropTypes.string,
-  label: PropTypes.string,
+  light: PropTypes.bool,
+  children: PropTypes.node.isRequired,
   history: PropTypes.shape({
     replace: PropTypes.func.isRequired,
   }).isRequired,

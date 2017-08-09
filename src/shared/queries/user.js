@@ -3,7 +3,7 @@
 import { gql } from 'react-apollo';
 
 export const userIdQuery = gql`
-  query {
+  query user {
     user {
       id
       email

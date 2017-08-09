@@ -23,7 +23,24 @@ class RegisterView extends Component {
       personalInfoForm: undefined,
       serviceForm: undefined,
       trainerForm: undefined,
+      refetchCounter: 0,
     };
+  }
+
+  // For unknown reason active user query is fired before saving auth0IdToken so it returns null.
+  // That way even though user is logged in just after few seconds it does not redirect to app section.
+  // Using few refetches to prevent that.
+  componentWillReceiveProps () {
+    const { user, refetch } = this.props.data;
+    if (!user && this.state.refetchCounter < 5) {
+      console.log(this.state.refetchCounter);
+      this.setState(state => (
+        {
+          refetchCounter: state.refetchCounter += 1,
+        }
+      ));
+      refetch();
+    }
   }
 
   getSteps = () => (

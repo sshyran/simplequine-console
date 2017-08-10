@@ -17,12 +17,6 @@ const AppName = styled('p')`
   color: #76AC78;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
-`;
-
-const Slogan = styled('p')`
-  font-family: 'Raleway', sans-serif;
-  font-size: 30px;
-  color: #2D2D2C;
 
   @media(min-width: 480px) {
     font-size: 32px;
@@ -35,6 +29,12 @@ const Slogan = styled('p')`
   @media(min-width: 1024px) {
     font-size: 38px;
   }
+`;
+
+const Slogan = styled('p')`
+  font-family: 'Raleway', sans-serif;
+  font-size: 26px;
+  color: #2D2D2C;
 `;
 
 const SpecialLetter = styled('span')`

@@ -16,16 +16,8 @@ const HomeContainer = styled('main')`
   font-weight: 400;
   line-height: normal;
 
-  @media (min-width: 480px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 600px) {
-    font-size: 20px;
-  }
-
   @media (min-width: 1024px) {
-    font-size: 24px;
+    font-size: 20px;
   }
 `;
 

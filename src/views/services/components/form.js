@@ -1,9 +1,10 @@
+
 // 3rd party modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';
 
-import { currencyCodes } from '../../../../../shared/constants/index';
+import { currencyCodes } from '../../../shared/constants/index';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -200,14 +201,23 @@ class ServiceForm extends Component {
   }
 }
 
+ServiceForm.defaultProps = {
+  service: {},
+};
+
 ServiceForm.propTypes = {
   form: PropTypes.shape({
     getFieldDecorator: PropTypes.func.isRequired,
     validateFieldsAndScroll: PropTypes.func.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  service: PropTypes.shape().isRequired,
+  service: PropTypes.shape({
+    name: PropTypes.string,
+    duration: PropTypes.number,
+    maxParticipants: PropTypes.number,
+    currency: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
 };
 
 export default Form.create()(ServiceForm);
-

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Spin, notification } from 'antd';
 
 // App modules
-import ServiceForm from '../components/serviceForm';
+import ServiceForm from '../components/form';
 
 const { Header, Content } = Layout;
 
@@ -16,12 +16,12 @@ const openNotificationWithIcon = (type, message, description) => {
   });
 };
 
-class UpdateServiceView extends Component {
-  updateService = ({ currency, description, duration, maxParticipants, name, price }) => {
-    const { updateServiceMutation, history, data } = this.props;
+class CreateServiceView extends Component {
+  createService = ({ currency, description, duration, maxParticipants, name, price }) => {
+    const { createServiceMutation, history, data } = this.props;
 
     const variables = {
-      serviceId: data.service.id,
+      userId: data.user.id,
       currency,
       description,
       duration,
@@ -30,9 +30,8 @@ class UpdateServiceView extends Component {
       price,
     };
 
-    updateServiceMutation({ variables })
+    createServiceMutation({ variables })
       .then((response) => {
-        data.refetch();
         console.log(response); // eslint-disable-line no-console
         openNotificationWithIcon('success', 'Success!', 'Changes have been saved.');
         history.push('/app/services/list');
@@ -43,13 +42,13 @@ class UpdateServiceView extends Component {
   };
 
   render () {
-    const { loading, error, service } = this.props.data;
+    const { loading, error, user } = this.props.data;
 
     if (loading) {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>UPDATE SERVICE</h4>
+            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>CREATE SERVICE</h4>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
@@ -66,22 +65,21 @@ class UpdateServiceView extends Component {
       );
     }
 
-    if (!service) {
+    if (!user) {
       return (
         <Redirect to={'/'} />
       );
     }
 
     return (
-
       <div>
         <Header>
-          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>UPDATE SERVICE</h4>
+          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>CREATE SERVICE</h4>
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <ServiceForm onSubmit={this.updateService} service={service} />
+              <ServiceForm onSubmit={this.createService} />
             </Col>
           </Row>
         </Content>
@@ -90,18 +88,18 @@ class UpdateServiceView extends Component {
   }
 }
 
-UpdateServiceView.propTypes = {
+CreateServiceView.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    service: PropTypes.shape({
+    user: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.shape(),
+    error: PropTypes.bool,
   }).isRequired,
-  updateServiceMutation: PropTypes.func.isRequired,
+  createServiceMutation: PropTypes.func.isRequired,
 };
 
-export default UpdateServiceView;
+export default CreateServiceView;

@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
 // App modules
-import CreateServiceContainer from './create/views/container';
-import UpdateServiceContainer from './edit/views/container';
-import ServiceListContainer from './list/views/container';
+import CreateServiceContainer from './containers/create';
+import UpdateServiceContainer from './containers/update';
+import ServiceListContainer from './containers/list';
 
-const TrainerMasterView = ({ match }) => (
+const ServiceMasterView = ({ match }) => (
   <div>
     <Route exact path={`${match.url}/list`} component={ServiceListContainer} />
     <Route exact path={`${match.url}/create`} component={CreateServiceContainer} />
@@ -17,10 +17,10 @@ const TrainerMasterView = ({ match }) => (
   </div>
 );
 
-TrainerMasterView.propTypes = {
+ServiceMasterView.propTypes = {
   match: PropTypes.shape({
     url: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default withRouter(TrainerMasterView);
+export default withRouter(ServiceMasterView);

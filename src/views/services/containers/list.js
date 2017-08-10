@@ -3,9 +3,9 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 // App modules
-import ServiceListView from './view';
-import servicesQuery from '../../../../../shared/queries/services';
-import deleteServiceMutation from '../../../../../shared/mutations/deleteService';
+import ServiceListView from '../views/list';
+import servicesQuery from '../network/servicesQuery';
+import deleteServiceMutation from '../../../shared/mutations/deleteService';
 
 const ServiceListContainer = compose(
   graphql(deleteServiceMutation, {
@@ -20,11 +20,11 @@ const ServiceListContainer = compose(
         return { data: { ...rest } };
       }
 
-      const onlyActiveServices = user.services.filter(service => service.isActive);
+      const activeServices = user.services.filter(service => service.isActive);
 
       return {
         data: {
-          services: onlyActiveServices,
+          services: activeServices,
           ...rest,
         },
       };

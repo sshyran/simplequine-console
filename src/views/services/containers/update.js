@@ -3,9 +3,9 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 // App modules
-import UpdateServiceView from './view';
-import updateService from '../../../../../shared/mutations/updateService';
-import serviceQuery from '../../../../../shared/queries/service';
+import UpdateServiceView from '../views/update';
+import updateService from '../network/update';
+import serviceQuery from '../network/serviceQuery';
 
 const UpdateServiceContainer = compose(
   graphql(updateService, {

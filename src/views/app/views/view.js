@@ -8,7 +8,7 @@ import { Layout } from 'antd';
 // App modules
 import MainMenu from '../components/menu';
 import TrainerFormView from '../../trainers/index';
-import ServiceFormView from '../../services/views/view';
+import ServiceFormView from '../../services/index';
 import ScheduleContainer from '../../schedule/views/container';
 import AccountContainer from '../../account/views/container';
 import SiderWrapper from '../components/siderWrapper';

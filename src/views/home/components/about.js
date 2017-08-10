@@ -34,7 +34,7 @@ const About = () => (
   <Container>
     <Content>
       <HomeText bold>
-        A simple application that helps you save your time.
+        An application that helps you save your time.
       </HomeText>
       <HomeText opacity={0.8} >
         Never ending calls? No more. <BreakLine />

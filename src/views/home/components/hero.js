@@ -21,8 +21,20 @@ const AppName = styled('p')`
 
 const Slogan = styled('p')`
   font-family: 'Raleway', sans-serif;
-  font-size: 26px;
+  font-size: 30px;
   color: #2D2D2C;
+
+  @media(min-width: 480px) {
+    font-size: 32px;
+  }
+
+  @media(min-width: 600px) {
+    font-size: 34px;
+  }
+
+  @media(min-width: 1024px) {
+    font-size: 38px;
+  }
 `;
 
 const SpecialLetter = styled('span')`

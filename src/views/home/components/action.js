@@ -69,7 +69,7 @@ const Action = ({ isLoggedIn }) => (
         </ButtonContainer>
       )}
       <Text>
-        Just do it - it’s <GreenText>simple</GreenText>.
+        Just do it - it’s <GreenText>easy</GreenText>.
       </Text>
     </Content>
   </Container>

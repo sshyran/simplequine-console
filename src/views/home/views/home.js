@@ -1,11 +1,12 @@
 /* 3rd party modules */
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 
-import Footer from '../components/footer';
+/* App modules */
 import About from '../components/about';
 import Action from '../components/action';
+import Footer from '../components/footer';
 import Hero from '../components/hero';
 import { colors } from '../../../shared/constants/index';
 

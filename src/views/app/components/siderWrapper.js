@@ -1,8 +1,10 @@
 /* 3rd party modules */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
 import { Icon, Layout, Menu } from 'antd';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+
+/* App modules */
 import { removeStorageItem } from '../../../shared/services/localStorage';
 
 const { Sider } = Layout;

@@ -1,10 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+/* 3rd party modules */
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { colors } from '../../../shared/constants/index';
+/* App modules */
 import LoginButton from '../components/loginButton';
+import { colors } from '../../../shared/constants/index';
 
 const Container = styled('div')`
   margin: 0 24px 80px;

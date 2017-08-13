@@ -1,6 +1,8 @@
+/* 3rd party modules */
 import React from 'react';
 import styled from 'styled-components';
 
+/* App modules */
 import logoSrc from '../../../assets/logo.svg';
 
 const Container = styled('div')`

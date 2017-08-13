@@ -1,8 +1,8 @@
 /* 3rd party modules */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import * as moment from 'moment-timezone';
 import { Form, Input, InputNumber, Button, Tooltip, Icon, Select } from 'antd';
+import * as moment from 'moment-timezone';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 const FormItem = Form.Item;
 const Option = Select.Option;

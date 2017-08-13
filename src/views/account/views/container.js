@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 
 /* App modules */
 import AccountView from './view';
-import { userIdQuery } from '../../../shared/queries/user';
 import updateUserMutation from '../../../shared/mutations/updateUser';
+import { userIdQuery } from '../../../shared/queries/user';
 
 const AccountContainer = compose(
   graphql(updateUserMutation, {

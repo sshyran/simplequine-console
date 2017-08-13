@@ -1,7 +1,7 @@
 /* 3rd party modules */
+import { Button, Col, Row, Layout } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Col, Row, Layout } from 'antd';
 
 const { Header, Content } = Layout;
 

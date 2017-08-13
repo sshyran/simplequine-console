@@ -1,9 +1,9 @@
 /* 3rd party modules */
+import Auth0Lock from 'auth0-lock';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Auth0Lock from 'auth0-lock';
 
 /* App modules */
 import { auth0ClientId, auth0Domain } from '../../../shared/constants/index';

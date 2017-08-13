@@ -1,8 +1,8 @@
 /* 3rd party modules */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Spin, notification } from 'antd';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 /* App modules */
 import EmailForm from '../components/emailForm';

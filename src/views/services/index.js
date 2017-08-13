@@ -1,9 +1,9 @@
-// 3rd party modules
+/* 3rd party modules */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import CreateServiceContainer from './containers/create';
 import UpdateServiceContainer from './containers/update';
 import ServiceListContainer from './containers/list';

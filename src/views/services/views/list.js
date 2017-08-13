@@ -1,10 +1,10 @@
-// 3rd party modules
+/* 3rd party modules */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Card, Popconfirm, Button, Spin, notification } from 'antd';
 
-// App modules
+/* App modules */
 
 const { Header, Content } = Layout;
 

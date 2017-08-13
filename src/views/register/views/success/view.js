@@ -1,11 +1,11 @@
 /* eslint-disable */
-// 3rd party modules
+/* 3rd party modules */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Spin, Button } from 'antd';
 
-// App modules
+/* App modules */
 
 const { Header, Content } = Layout;
 

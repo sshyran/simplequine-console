@@ -1,11 +1,11 @@
-// 3rd party modules
+/* 3rd party modules */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Calendar, Col, Row, Spin, Table, Layout } from 'antd';
 import moment from 'moment';
 
-// App modules
+/* App modules */
 import './view.css';
 
 const { Header, Content } = Layout;

@@ -1,10 +1,10 @@
-// 3rd party modules
+/* 3rd party modules */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Spin, notification } from 'antd';
 
-// App modules
+/* App modules */
 import ServiceForm from '../components/form';
 
 const { Header, Content } = Layout;

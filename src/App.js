@@ -1,8 +1,8 @@
-// 3rd party modules
+/* 3rd party modules */
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import HomeContainer from './views/home/containers/home';
 import RegisterContainer from './views/register/views/container';
 import SuccessContainer from './views/register/views/success/container';

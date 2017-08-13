@@ -1,8 +1,8 @@
-// 3rd party modules
+/* 3rd party modules */
 import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import TrainerListView from '../views/list';
 import trainersQuery from '../network/trainersQuery';
 import deleteMutation from '../network/deleteMutation';

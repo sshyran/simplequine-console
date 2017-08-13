@@ -1,8 +1,8 @@
-// 3rd party modules
+/* 3rd party modules */
 import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import RegisterView from './view';
 import createUser from '../../../shared/mutations/createUser';
 import { userIdQuery } from '../../../shared/queries/user';

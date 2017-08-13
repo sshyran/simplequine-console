@@ -1,10 +1,10 @@
-// 3rd party modules
+/* 3rd party modules */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Col, Row, Layout, Steps, message } from 'antd';
 
-// App modules
+/* App modules */
 import RegistrationForm from '../components/registerForm';
 import ServiceForm from '../components/serviceForm';
 import TrainerForm from '../components/trainerForm';

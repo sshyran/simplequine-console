@@ -1,8 +1,8 @@
-// 3rd party modules
+/* 3rd party modules */
 import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import ServiceListView from '../views/list';
 import servicesQuery from '../network/servicesQuery';
 import deleteServiceMutation from '../../../shared/mutations/deleteService';

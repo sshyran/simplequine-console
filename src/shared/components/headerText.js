@@ -1,4 +1,4 @@
-// 3rd party modules
+/* 3rd party modules */
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';

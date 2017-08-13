@@ -1,5 +1,5 @@
 
-// 3rd party modules
+/* 3rd party modules */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';

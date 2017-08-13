@@ -1,11 +1,11 @@
-// 3rd party modules
+/* 3rd party modules */
 import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
-// App modules
-import UpdateTrainerView from '../views/update';
-import updateMutation from '../network/updateMutation';
+/* App modules */
 import trainerQuery from '../network/trainerQuery';
+import updateMutation from '../network/updateMutation';
+import UpdateTrainerView from '../views/update';
 
 const UpdateTrainerContainer = compose(
   graphql(updateMutation, {

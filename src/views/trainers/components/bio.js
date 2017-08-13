@@ -1,5 +1,6 @@
-import React from 'react';
+/* 3rd party modules */
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const TrainerBio = props => (
   <div>

@@ -1,12 +1,12 @@
-// 3rd party modules
-import React from 'react';
+/* 3rd party modules */
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import CreateTrainerContainer from './containers/create';
-import UpdateTrainerContainer from './containers/update';
 import TrainerListContainer from './containers/list';
+import UpdateTrainerContainer from './containers/update';
 
 const TrainerMasterView = ({ match }) => (
   <div>

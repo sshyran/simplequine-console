@@ -1,9 +1,9 @@
-// 3rd party modules
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+/* 3rd party modules */
 import { Form, Input, Button, TimePicker, Checkbox } from 'antd';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import { range } from 'ramda';
+import React, { Component } from 'react';
 
 const FormItem = Form.Item;
 const CheckboxGroup = Checkbox.Group;

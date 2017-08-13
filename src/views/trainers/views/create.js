@@ -1,10 +1,10 @@
-// 3rd party modules
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+/* 3rd party modules */
 import { Col, Row, Layout, Spin } from 'antd';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
-// App modules
+/* App modules */
 import TrainerForm from '../components/form';
 import HeaderText from '../../../shared/components/headerText';
 

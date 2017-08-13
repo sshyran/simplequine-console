@@ -1,16 +1,16 @@
-// 3rd party modules
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+/* 3rd party modules */
 import { Col, Row, Layout, Button, Spin } from 'antd';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-// App modules
-import HeaderText from '../../../shared/components/headerText';
-import FlexItem from '../../../shared/components/flexItem';
+/* App modules */
 import TrainerBio from '../components/bio';
 import TrainerCard from '../components/card';
 import { getStartOfToday } from '../services/time';
+import FlexItem from '../../../shared/components/flexItem';
+import HeaderText from '../../../shared/components/headerText';
 
 const { Header, Content } = Layout;
 

@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+/* 3rd party modules */
 import { Card, Popconfirm } from 'antd';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TrainerCard = props => (
   <Card

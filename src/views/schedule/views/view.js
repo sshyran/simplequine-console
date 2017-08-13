@@ -1,9 +1,9 @@
 /* 3rd party modules */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 import { Calendar, Col, Row, Spin, Table, Layout } from 'antd';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 /* App modules */
 import './view.css';

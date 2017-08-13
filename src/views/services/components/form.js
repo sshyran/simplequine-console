@@ -1,9 +1,10 @@
 
 /* 3rd party modules */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
+/* App modules */
 import { currencyCodes } from '../../../shared/constants/index';
 
 const FormItem = Form.Item;

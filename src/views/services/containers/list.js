@@ -3,8 +3,8 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 /* App modules */
-import ServiceListView from '../views/list';
 import servicesQuery from '../network/servicesQuery';
+import ServiceListView from '../views/list';
 import deleteServiceMutation from '../../../shared/mutations/deleteService';
 
 const ServiceListContainer = compose(

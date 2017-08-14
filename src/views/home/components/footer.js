@@ -2,6 +2,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/* App modules */
+import facebookIcon from '../../../assets/facebook.svg';
+import linkedInIcon from '../../../assets/linkedin.svg';
+import twitterIcon from '../../../assets/twitter.svg';
+
 const Container = styled('div')`
   display: flex;
   justify-content: center;
@@ -23,22 +28,35 @@ const Copyright = styled('p')`
   }
 `;
 
-const SocialIcon = styled('img')`
-  margin-left: 30px;
+const Social = styled('div')`
   margin-bottom: 16px;
+`;
+
+const SocialLink = styled('a')`
+  margin-left: 30px;
 
   &:first-child {
     margin-left: 0;
   }
 `;
 
+const SocialIcon = styled('img')`
+  height: 32px;
+`;
+
 const Footer = () => (
   <Container>
-    <div>
-      <SocialIcon src="https://via.placeholder.com/28x28" alt="placeholder" />
-      <SocialIcon src="https://via.placeholder.com/28x28" alt="placeholder" />
-      <SocialIcon src="https://via.placeholder.com/28x28" alt="placeholder" />
-    </div>
+    <Social>
+      <SocialLink href="https://www.facebook.com/HorseBitMedia" rel="noopener noreferrer" target="_blank">
+        <SocialIcon src={facebookIcon} alt="Facebook" />
+      </SocialLink>
+      <SocialLink href="https://twitter.com/HorseBitMedia" rel="noopener noreferrer" target="_blank">
+        <SocialIcon src={twitterIcon} alt="Twitter" />
+      </SocialLink>
+      <SocialLink href="https://www.linkedin.com/company/horse-bit-media" rel="noopener noreferrer" target="_blank">
+        <SocialIcon src={linkedInIcon} alt="LinkedIn" />
+      </SocialLink>
+    </Social>
     <Copyright>&copy; HorseBitMedia 2017</Copyright>
   </Container>
 );

@@ -9,7 +9,7 @@ import { Redirect, Route } from 'react-router-dom';
 import MainMenu from '../components/menu';
 import SiderWrapper from '../components/siderWrapper';
 import AccountContainer from '../../account/views/container';
-import ScheduleContainer from '../../schedule/views/container';
+import ScheduleContainer from '../../schedule/containers/container';
 import ServiceFormView from '../../services/index';
 import TrainerFormView from '../../trainers/index';
 

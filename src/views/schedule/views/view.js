@@ -6,7 +6,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
 /* App modules */
-import './view.css';
+import Event from '../components/event';
+import { getAppointmentsForRendering } from '../services/calendar';
+import { createTableData } from '../services/table';
+import HeaderText from '../../../shared/components/headerText';
 
 const { Header, Content } = Layout;
 
@@ -15,27 +18,17 @@ class ScheduleView extends Component {
     selectedDate: moment(),
   };
 
-  onSelect = (selectedDate) => {
+  onDateChange = (selectedDate) => {
     this.setState({
       selectedDate,
     });
   };
 
-  onPanelChange = (selectedDate) => {
-    this.setState({ selectedDate });
-  };
-
-  getAppointmentsOfGivenDay = (date) => {
-    const startOfDay = moment(date).startOf('day');
-    const endOfDay = moment(date).endOf('day');
-    const appointments = this.props.data.appointments;
-
-    return appointments.filter(appointment => moment(appointment.startsAt).isBetween(startOfDay, endOfDay));
-  };
-
   getTableData = () => {
-    const appointmentList = this.sortByStartingDate(this.removeDuplicateAppointments(this.getAppointmentsOfGivenDay(this.state.selectedDate)));
+    const appointmentList = getAppointmentsForRendering(this.state.selectedDate, this.props.data.appointments);
+
     return appointmentList.map(appointment => ({
+      id: appointment.id,
       key: appointment.id,
       startsAt: moment(appointment.startsAt).format('HH:mm'),
       endsAt: moment(appointment.endsAt).format('HH:mm'),
@@ -48,38 +41,15 @@ class ScheduleView extends Component {
     }));
   };
 
-  removeDuplicateAppointments = (appointments) => {
-    if (appointments.length > 1) {
-      // Appointments which allow only 1 participant
-      const privateAppointments = appointments.filter(appointment => !appointment.appointmentGroup);
-      // Appointments which allow multiple participants
-      const groupAppointments = appointments.filter(appointment => appointment.appointmentGroup);
-      // Unique IDs of groupAppointments
-      const groupIds = groupAppointments
-        .map(appointment => appointment.appointmentGroup.id)
-        .reduce((x, y) => x.includes(y) ? x : [...x, y], []); // eslint-disable-line no-confusing-arrow
-      // Filtered group appointments
-      const filteredGroupAppointments = groupIds
-        .map(groupId => groupAppointments.find(appointment => appointment.appointmentGroup.id === groupId));
-      return [].concat(privateAppointments, filteredGroupAppointments);
-    }
-
-    return [];
-  };
-
-  sortByStartingDate = appointments => appointments
-    .sort((a, b) => moment(b.startsAt).unix() - moment(a.startsAt).unix())
-    .reverse();
-
   dateCellRender = (date) => {
-    const appointmentList = this.sortByStartingDate(this.removeDuplicateAppointments(this.getAppointmentsOfGivenDay(date)));
+    const appointmentList = getAppointmentsForRendering(date, this.props.data.appointments);
+
     return (
       <ul className="events">
         {
           appointmentList.map(appointment => (
             <li key={appointment.id}>
-              <span className="event-normal">●</span>
-              {`${moment(appointment.startsAt).format('HH:mm')} - ${appointment.service.name}`}
+              <Event date={appointment.startsAt} description={appointment.service.name} />
             </li>
           ))
         }
@@ -94,27 +64,12 @@ class ScheduleView extends Component {
       { title: 'Phone', dataIndex: 'clientPhoneNumber', key: 'clientPhoneNumber' },
     ];
 
-    let data = [];
-    if (record.appointmentGroup) {
-      data = record.appointmentGroup.appointments.map(appointment => ({
-        key: appointment.id,
-        clientName: `${appointment.firstName} ${appointment.lastName}`,
-        clientEmail: appointment.email,
-        clientPhoneNumber: appointment.phoneNumber,
-      }));
-    } else {
-      data = [{
-        key: record.key,
-        clientName: record.clientName,
-        clientEmail: record.clientEmail,
-        clientPhoneNumber: record.clientPhoneNumber,
-      }];
-    }
+    const tableData = createTableData(record);
 
     return (
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={tableData}
         pagination={false}
       />
     );
@@ -135,11 +90,9 @@ class ScheduleView extends Component {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>SCHEDULE</h4>
+            <HeaderText>SCHEDULE</HeaderText>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
+          <Content>
             <Spin />
           </Content>
         </div>
@@ -154,22 +107,22 @@ class ScheduleView extends Component {
 
     if (!isUserLoggedIn) {
       return (
-        <Redirect to={'/app'} />
+        <Redirect to={'/'} />
       );
     }
 
     return (
       <div>
         <Header>
-          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>SCHEDULE</h4>
+          <HeaderText>SCHEDULE</HeaderText>
         </Header>
         <Content style={{ margin: '0 16px', overflow: 'initial' }}>
           <Row type="flex" align="center">
             <Col xs={24} >
               <Calendar
                 value={selectedDate}
-                onSelect={this.onSelect}
-                onPanelChange={this.onPanelChange}
+                onSelect={this.onDateChange}
+                onPanelChange={this.onDateChange}
                 dateCellRender={this.dateCellRender}
               />
             </Col>

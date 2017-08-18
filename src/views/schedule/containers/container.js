@@ -3,8 +3,8 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 /* App modules */
-import ScheduleView from './view';
-import appointmentsQuery from '../../../shared/queries/appointments';
+import ScheduleView from '../views/view';
+import appointmentsQuery from '../network/appointments';
 
 const ScheduleContainer = compose(
   graphql(appointmentsQuery, {
@@ -19,9 +19,7 @@ const ScheduleContainer = compose(
 
       return {
         data: {
-          appointments: user.services
-            .map(service => service.appointments)
-            .reduce((acc, cur) => acc.concat(cur), []),
+          appointments: user.appointments,
           ...rest,
           isUserLoggedIn: true,
         },

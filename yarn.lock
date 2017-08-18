@@ -13,21 +13,17 @@
   version "2.0.40"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.40.tgz#ac02de68e66c004a61b7cb16df8b1db3a254cca9"
 
+"@types/graphql@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.10.2.tgz#d7c79acbaa17453b6681c80c34b38fcb10c4c08c"
+
 "@types/graphql@^0.9.0":
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.9.1.tgz#b04ebe84bc997cc60dbea2ed4d0d4342c737f99d"
 
-"@types/graphql@^0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.9.4.tgz#cdeb6bcbef9b6c584374b81aa7f48ecf3da404fa"
-
 "@types/isomorphic-fetch@0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
-
-"@types/zen-observable@^0.5.1":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.2.tgz#d84e54a0e16d2b4404e0795ae493a39a3902bdd8"
 
 abab@^1.0.3:
   version "1.0.3"
@@ -156,14 +152,14 @@ ansi-styles@^3.0.0:
   dependencies:
     color-convert "^1.0.0"
 
-antd@^2.12.2:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-2.12.2.tgz#bc48771964c4055c00ee371b4482b8b98ad4ac01"
+antd@^2.12.6:
+  version "2.12.6"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-2.12.6.tgz#3dd21a8c46ef11ada555ac7dc9ded9ff96387830"
   dependencies:
     array-tree-filter "~1.0.0"
     babel-runtime "6.x"
     classnames "~2.2.0"
-    create-react-class "^15.5.3"
+    create-react-class "^15.6.0"
     css-animation "^1.2.5"
     dom-closest "^0.2.0"
     lodash.debounce "^4.0.8"
@@ -171,12 +167,12 @@ antd@^2.12.2:
     omit.js "^1.0.0"
     prop-types "^15.5.7"
     rc-animate "^2.3.6"
-    rc-calendar "~8.4.1"
+    rc-calendar "~9.0.0"
     rc-cascader "~0.11.3"
     rc-checkbox "~2.0.3"
     rc-collapse "~1.7.5"
     rc-dialog "~6.5.10"
-    rc-dropdown "~1.4.11"
+    rc-dropdown "~1.5.0"
     rc-editor-mention "~0.6.12"
     rc-form "~1.4.0"
     rc-input-number "~3.6.0"
@@ -190,10 +186,10 @@ antd@^2.12.2:
     rc-steps "~2.5.1"
     rc-switch "~1.5.1"
     rc-table "~5.4.0"
-    rc-tabs "~8.0.0"
+    rc-tabs "~9.0.2"
     rc-time-picker "~2.4.1"
     rc-tooltip "~3.4.6"
-    rc-tree "~1.5.0"
+    rc-tree "~1.7.0"
     rc-tree-select "~1.10.2"
     rc-upload "~2.3.7"
     rc-util "^4.0.4"
@@ -224,11 +220,11 @@ apollo-client@^1.4.0:
     "@types/graphql" "^0.9.0"
     "@types/isomorphic-fetch" "0.0.34"
 
-apollo-client@^1.9.0-1:
-  version "1.9.0-1"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-1.9.0-1.tgz#4f5dccb95e0413b884af91b68552618be8a7411c"
+apollo-client@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-1.9.1.tgz#9e6a383605572c755038cf5d7fdac9382bcdc040"
   dependencies:
-    apollo-link "^0.0.3"
+    apollo-link-core "^0.5.0"
     graphql "^0.10.0"
     graphql-anywhere "^3.0.1"
     graphql-tag "^2.0.0"
@@ -236,27 +232,15 @@ apollo-client@^1.9.0-1:
     symbol-observable "^1.0.2"
     whatwg-fetch "^2.0.0"
   optionalDependencies:
-    "@types/async" "^2.0.31"
-    "@types/graphql" "^0.9.0"
-    "@types/isomorphic-fetch" "0.0.34"
+    "@types/graphql" "0.10.2"
 
-apollo-fetch@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/apollo-fetch/-/apollo-fetch-0.3.0.tgz#30a88346252e9bb4b969f93f3b23ecd748f84e68"
+apollo-link-core@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/apollo-link-core/-/apollo-link-core-0.5.0.tgz#dc87da1aaa63b029321ae70938dc26257f5ab8c6"
   dependencies:
-    isomorphic-fetch "^2.2.1"
-
-apollo-link@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-0.0.3.tgz#9b02db8def792688e14f8be8b30f716f7789acb9"
-  dependencies:
-    apollo-fetch "^0.3.0"
     graphql "^0.10.3"
     graphql-tag "^2.4.2"
-    zen-observable "git+https://github.com/evanshauser/zen-observable.git"
-  optionalDependencies:
-    "@types/graphql" "^0.9.4"
-    "@types/zen-observable" "^0.5.1"
+    zen-observable-ts "^0.4.0"
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -419,9 +403,9 @@ auth0-js@~8.7.0:
     url-join "^1.1.0"
     winchan "^0.2.0"
 
-auth0-lock@^10.18.0:
-  version "10.18.0"
-  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-10.18.0.tgz#73c2089e87f8bfa839d18ed19675ba601836bddf"
+auth0-lock@^10.20.0:
+  version "10.20.0"
+  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-10.20.0.tgz#1fac3ea04ed21bcbfaf5cfb0689cf9858a5b2d13"
   dependencies:
     auth0-js "~8.7.0"
     blueimp-md5 "2.3.1"
@@ -3024,7 +3008,7 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-graphql-anywhere@^3.0.0, graphql-anywhere@^3.0.1:
+graphql-anywhere@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-3.1.0.tgz#3ea0d8e8646b5cee68035016a9a7557c15c21e96"
 
@@ -3645,7 +3629,7 @@ isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
+isomorphic-fetch@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -4243,14 +4227,6 @@ lodash.isarguments@^3.0.0:
 lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
-
-lodash.isequal@^4.1.1:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
-
-lodash.isobject@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/lodash.isobject/-/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
 
 lodash.keys@^3.1.2:
   version "3.1.2"
@@ -5426,9 +5402,9 @@ rc-animate@2.x, rc-animate@^2.0.2, rc-animate@^2.3.0, rc-animate@^2.3.6:
     css-animation "^1.3.0"
     prop-types "^15.5.6"
 
-rc-calendar@~8.4.1:
-  version "8.4.4"
-  resolved "https://registry.yarnpkg.com/rc-calendar/-/rc-calendar-8.4.4.tgz#544386bdb80e1a6479d48aff385ca11a2d8084fc"
+rc-calendar@~9.0.0:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/rc-calendar/-/rc-calendar-9.0.1.tgz#a259e70ea2ceaffeafd96f9c6b2462daabeeea92"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -5436,7 +5412,7 @@ rc-calendar@~8.4.1:
     moment "2.x"
     prop-types "^15.5.8"
     rc-trigger "1.x"
-    rc-util "4.x"
+    rc-util "^4.0.4"
 
 rc-cascader@~0.11.3:
   version "0.11.3"
@@ -5476,9 +5452,9 @@ rc-dialog@~6.5.10:
     rc-animate "2.x"
     rc-util "^4.0.4"
 
-rc-dropdown@~1.4.11:
-  version "1.4.11"
-  resolved "https://registry.yarnpkg.com/rc-dropdown/-/rc-dropdown-1.4.11.tgz#91bdf7bb77064c928c117909d757f22582512de7"
+rc-dropdown@~1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/rc-dropdown/-/rc-dropdown-1.5.0.tgz#2648ea78b4d56646ef306978873d3fa8993b8c48"
   dependencies:
     prop-types "^15.5.8"
     rc-trigger "1.x"
@@ -5634,9 +5610,9 @@ rc-table@~5.4.0:
     shallowequal "^0.2.2"
     warning "^3.0.0"
 
-rc-tabs@~8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-8.0.0.tgz#24519e7bafd43b0440e9c651a0d3ef0312bcfcac"
+rc-tabs@~9.0.2:
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-9.0.4.tgz#ba2971ec76319ab08907c4fb781b83243df0ca6c"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -5683,7 +5659,7 @@ rc-tree-select@~1.10.2:
     rc-trigger "1.x"
     rc-util "^4.0.2"
 
-rc-tree@^1.3.0, rc-tree@~1.5.0:
+rc-tree@^1.3.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-1.5.0.tgz#6b700303c4f160ad7f6c438a8fdca57de96a5dd1"
   dependencies:
@@ -5692,6 +5668,17 @@ rc-tree@^1.3.0, rc-tree@~1.5.0:
     prop-types "^15.5.8"
     rc-animate "2.x"
     rc-util "^4.0.2"
+
+rc-tree@~1.7.0:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-1.7.1.tgz#bb65a2bc69261cd7da3cb682fc7894c42e078256"
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "2.x"
+    prop-types "^15.5.8"
+    rc-animate "2.x"
+    rc-util "^4.0.4"
+    warning "^3.0.0"
 
 rc-trigger@1.x:
   version "1.11.2"
@@ -5730,18 +5717,14 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^1.4.8:
-  version "1.4.8"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-1.4.8.tgz#b510f207b08ce4bd1e3adbd46a3ede68e3af27e7"
+react-apollo@^1.4.14:
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-1.4.14.tgz#86af913887e447710e4e5d85ca6277b35f1a3b82"
   dependencies:
     apollo-client "^1.4.0"
-    graphql-anywhere "^3.0.0"
     graphql-tag "^2.0.0"
     hoist-non-react-statics "^2.2.0"
     invariant "^2.2.1"
-    lodash.flatten "^4.2.0"
-    lodash.isequal "^4.1.1"
-    lodash.isobject "^3.0.2"
     lodash.pick "^4.4.0"
     object-assign "^4.0.1"
     prop-types "^15.5.8"
@@ -7354,6 +7337,6 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-"zen-observable@git+https://github.com/evanshauser/zen-observable.git":
-  version "0.5.2"
-  resolved "git+https://github.com/evanshauser/zen-observable.git#a11ee4bd848f381898b6cd93c769eb1dcc0febf6"
+zen-observable-ts@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.4.0.tgz#a74bc9fe59747948a577bd513d438e70fcfae7e2"

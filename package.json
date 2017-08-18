@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^2.12.2",
-    "apollo-client": "^1.9.0-1",
-    "auth0-lock": "^10.18.0",
+    "antd": "^2.12.6",
+    "apollo-client": "^1.9.1",
+    "auth0-lock": "^10.20.0",
     "graphql-tag": "^2.4.2",
     "history": "^4.6.3",
     "moment": "^2.18.1",
@@ -13,7 +13,7 @@
     "prop-types": "^15.5.10",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
-    "react-apollo": "^1.4.8",
+    "react-apollo": "^1.4.14",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
     "styled-components": "^2.1.2"

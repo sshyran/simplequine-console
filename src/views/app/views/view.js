@@ -8,7 +8,7 @@ import { Redirect, Route } from 'react-router-dom';
 /* App modules */
 import MainMenu from '../components/menu';
 import SiderWrapper from '../components/siderWrapper';
-import AccountContainer from '../../account/views/container';
+import AccountContainer from '../../account/containers/container';
 import ScheduleContainer from '../../schedule/containers/container';
 import ServiceFormView from '../../services/index';
 import TrainerFormView from '../../trainers/index';

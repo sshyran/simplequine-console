@@ -1,28 +1,38 @@
 /* 3rd party modules */
-import { Form, Input, InputNumber, Button, Tooltip, Icon, Select } from 'antd';
+import { Form, Input, Button, InputNumber, Tooltip, Icon, Select } from 'antd';
 import * as moment from 'moment-timezone';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+import { getStorageItem } from '../services/localStorage';
+
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-class EmailForm extends Component {
+class AccountForm extends Component {
+  getInitialValue = (key) => {
+    const formState = this.props.formState;
+
+    if (formState && formState[key]) {
+      return formState[key];
+    }
+
+    return undefined;
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         this.props.onSubmit(values);
       } else {
-        console.error(err); // eslint-disable-line no-console
+        console.log(err); // eslint-disable-line no-console
       }
     });
   };
 
   render () {
     const { getFieldDecorator } = this.props.form;
-    const { email, name, daysInAdvance, timeZoneName } = this.props.user;
-    const timeZoneNames = moment.tz.names();
 
     const formItemLayout = {
       labelCol: {
@@ -41,6 +51,27 @@ class EmailForm extends Component {
       },
     };
 
+    const timeZoneNames = moment.tz.names();
+    const initialName = this.getInitialValue('name');
+    const initialDaysInAdvance = this.getInitialValue('daysInAdvance') || 30;
+
+    let initialEmail;
+    let initialTimeZoneName;
+
+    if (this.getInitialValue('email')) {
+      initialEmail = this.getInitialValue('email');
+    }
+
+    if (getStorageItem('auth0Email') !== 'undefined') {
+      initialEmail = getStorageItem('auth0Email');
+    }
+
+    if (this.getInitialValue('timeZoneName')) {
+      initialTimeZoneName = this.getInitialValue('timeZoneName');
+    } else {
+      initialTimeZoneName = moment.tz.guess();
+    }
+
     return (
       <Form onSubmit={this.handleSubmit} layout={'vertical'}>
         <FormItem
@@ -57,7 +88,7 @@ class EmailForm extends Component {
             }, {
               max: 254, message: 'Your email address is too long!',
             }],
-            initialValue: email,
+            initialValue: initialEmail,
           })(
             <Input />,
           )}
@@ -80,7 +111,7 @@ class EmailForm extends Component {
             }, {
               required: true, message: 'Please input your business name!',
             }],
-            initialValue: name,
+            initialValue: initialName,
           })(
             <Input />,
           )}
@@ -103,12 +134,12 @@ class EmailForm extends Component {
             }, {
               required: true, message: 'Please specify your time zone!',
             }],
-            initialValue: timeZoneName,
+            initialValue: initialTimeZoneName,
           })(
             <Select>
               {
-                timeZoneNames.map(timeZone => (
-                  <Option key={timeZone} value={timeZone}>{timeZone}</Option>
+                timeZoneNames.map(timeZoneName => (
+                  <Option key={timeZoneName} value={timeZoneName}>{timeZoneName}</Option>
                 ))
               }
             </Select>,
@@ -135,32 +166,33 @@ class EmailForm extends Component {
             }, {
               required: true, message: 'Please input number of days!',
             }],
-            initialValue: daysInAdvance,
+            initialValue: initialDaysInAdvance,
           })(
             <InputNumber min={1} max={180} />,
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" size="large">Submit</Button>
+          <Button type="primary" htmlType="submit" size="large">{this.props.buttonText}</Button>
         </FormItem>
       </Form>
     );
   }
 }
 
-EmailForm.propTypes = {
+AccountForm.propTypes = {
+  buttonText: PropTypes.string,
   form: PropTypes.shape({
     getFieldDecorator: PropTypes.func.isRequired,
     validateFieldsAndScroll: PropTypes.func.isRequired,
   }).isRequired,
+  formState: PropTypes.shape(),
   onSubmit: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    daysInAdvance: PropTypes.number.isRequired,
-    timeZoneName: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
-export default Form.create()(EmailForm);
+AccountForm.defaultProps = {
+  formState: undefined,
+  buttonText: 'Submit',
+};
+
+export default Form.create()(AccountForm);
 

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
 /* App modules */
-import RegistrationForm from '../components/registerForm';
+import AccountForm from '../../../shared/components/accountForm';
 import ServiceForm from '../components/serviceForm';
 import TrainerForm from '../components/trainerForm';
 import { getStorageItem, removeStorageItem } from '../../../shared/services/localStorage';
@@ -50,7 +50,7 @@ class RegisterView extends Component {
         content: (
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <RegistrationForm onSubmit={this.savePersonalInfoForm} formState={this.state.personalInfoForm} />
+              <AccountForm onSubmit={this.savePersonalInfoForm} formState={this.state.personalInfoForm} buttonText="Next" />
             </Col>
           </Row>
         ),

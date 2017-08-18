@@ -3,15 +3,15 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 /* App modules */
-import AccountView from './view';
-import updateUserMutation from '../../../shared/mutations/updateUser';
-import { userIdQuery } from '../../../shared/queries/user';
+import AccountView from '../views/view';
+import userQuery from '../network/userQuery';
+import updateUserMutation from '../network/updateUser';
 
 const AccountContainer = compose(
   graphql(updateUserMutation, {
     name: 'updateUserMutation',
   }),
-  graphql(userIdQuery, {
+  graphql(userQuery, {
     options: { fetchPolicy: 'network-only' },
   }),
 )(withRouter(AccountView));

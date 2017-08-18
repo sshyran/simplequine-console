@@ -57,11 +57,11 @@ class SuccessView extends Component {
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
                 }}
-                href={`https://book.horsebitmedia.com/${user.id}`}
+                href={`https://book.${window.location.host}.com/${user.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {`https://book.horsebitmedia.com/${user.id}`}
+                {`https://book.${window.location.host}.com/${user.id}`}
               </a>
               <p style={{ marginBottom: '20px' }}>You can always find your booking address in Account section of the app.</p>
               <p style={{ marginBottom: '20px' }}>

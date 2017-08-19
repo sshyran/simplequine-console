@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 /* App modules */
+import HeaderText from '../../../shared/components/headerText';
 
 const { Header, Content } = Layout;
 
@@ -37,7 +38,7 @@ class ServiceListView extends Component {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>SERVICE LIST</h4>
+            <HeaderText>SERVICE LIST</HeaderText>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}

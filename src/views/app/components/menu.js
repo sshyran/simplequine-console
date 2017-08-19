@@ -3,12 +3,15 @@ import { Button, Col, Row, Layout } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/* App modules */
+import HeaderText from '../../../shared/components/headerText';
+
 const { Header, Content } = Layout;
 
 const Menu = () => (
   <div>
     <Header>
-      <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>MENU</h4>
+      <HeaderText>MENU</HeaderText>
     </Header>
     <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
       <Row className="full-height-width" type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>

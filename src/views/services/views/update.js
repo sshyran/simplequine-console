@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 /* App modules */
 import ServiceForm from '../components/form';
+import HeaderText from '../../../shared/components/headerText';
 
 const { Header, Content } = Layout;
 
@@ -49,7 +50,7 @@ class UpdateServiceView extends Component {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>UPDATE SERVICE</h4>
+            <HeaderText>UPDATE SERVICE</HeaderText>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
@@ -76,7 +77,7 @@ class UpdateServiceView extends Component {
 
       <div>
         <Header>
-          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>UPDATE SERVICE</h4>
+          <HeaderText>UPDATE SERVICE</HeaderText>
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>

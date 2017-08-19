@@ -6,10 +6,10 @@ import styled from 'styled-components';
 const { Content } = Layout;
 
 const StyledContent = styled(Content)`
-  alignItems: 'center';
-  display: 'flex';
-  height: 'calc(100vh - 64px)';
-  justifyContent: 'center';
+  align-items: center;
+  display: flex;
+  height: calc(100vh - 64px);
+  justify-content: center;
 `;
 
 const Placeholder = () => (

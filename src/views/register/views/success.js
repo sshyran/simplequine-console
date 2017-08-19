@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+/* App modules */
+import HeaderText from '../../../shared/components/headerText';
+
 const { Header, Content } = Layout;
 
 class SuccessView extends Component {
@@ -16,7 +19,7 @@ class SuccessView extends Component {
       return (
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>ACCOUNT</h4>
+            <HeaderText>ACCOUNT</HeaderText>
           </Header>
           <Content
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
@@ -42,7 +45,7 @@ class SuccessView extends Component {
     return (
       <div>
         <Header>
-          <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>Congratulations!</h4>
+          <HeaderText>Congratulations!</HeaderText>
         </Header>
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>

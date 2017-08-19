@@ -10,21 +10,28 @@ import ServiceForm from '../components/serviceForm';
 import TrainerForm from '../components/trainerForm';
 import { getStorageItem, removeStorageItem } from '../../../shared/services/localStorage';
 import { userIdQuery } from '../../../shared/queries/user';
+import HeaderText from '../../../shared/components/headerText';
+import { getFormData, saveFormData, removeFormData } from '../services/storage';
 
 
 const { Header, Content } = Layout;
 const Step = Steps.Step;
 
 class RegisterView extends Component {
+  static formKeys = {
+    personalInfo: 'registrationPersonalInfo',
+    service: 'registrationService',
+    trainer: 'registrationTrainer',
+  }
+
   constructor (props) {
     super(props);
     this.state = {
       current: 0,
-      personalInfoForm: undefined,
-      serviceForm: undefined,
-      trainerForm: undefined,
       refetchCounter: 0,
     };
+
+    removeFormData(Object.values(RegisterView.formKeys));
   }
 
   // For unknown reason active user query is fired before saving auth0IdToken so it returns null.
@@ -33,7 +40,6 @@ class RegisterView extends Component {
   componentWillReceiveProps () {
     const { user, refetch } = this.props.data;
     if (!user && this.state.refetchCounter < 5) {
-      console.log(this.state.refetchCounter);
       this.setState(state => (
         {
           refetchCounter: state.refetchCounter += 1,
@@ -43,6 +49,10 @@ class RegisterView extends Component {
     }
   }
 
+  componentWillUnmount () {
+    removeFormData(Object.values(RegisterView.formKeys));
+  }
+
   getSteps = () => (
     [
       {
@@ -50,7 +60,11 @@ class RegisterView extends Component {
         content: (
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <AccountForm onSubmit={this.savePersonalInfoForm} formState={this.state.personalInfoForm} buttonText="Next" />
+              <AccountForm
+                onSubmit={this.savePersonalInfoForm}
+                formState={getFormData(RegisterView.formKeys.personalInfo)}
+                buttonText="Next"
+              />
             </Col>
           </Row>
         ),
@@ -60,7 +74,11 @@ class RegisterView extends Component {
         content: (
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <ServiceForm onSubmit={this.saveServiceForm} formState={this.state.serviceForm} onPreviousClick={this.prev} />
+              <ServiceForm
+                onSubmit={this.saveServiceForm}
+                formState={getFormData(RegisterView.formKeys.service)}
+                onPreviousClick={values => this.prev(RegisterView.formKeys.service, values)}
+              />
             </Col>
           </Row>
         ),
@@ -70,7 +88,11 @@ class RegisterView extends Component {
         content: (
           <Row type="flex" justify="center" align="center" style={{ flexFlow: 'column' }}>
             <Col span={24} style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <TrainerForm onSubmit={this.saveTrainerForm} onPreviousClick={this.prev} />
+              <TrainerForm
+                onSubmit={this.saveTrainerForm}
+                formState={getFormData(RegisterView.formKeys.trainer)}
+                onPreviousClick={values => this.prev(RegisterView.formKeys.trainer, values)}
+              />
             </Col>
           </Row>
         ),
@@ -83,28 +105,31 @@ class RegisterView extends Component {
     this.setState({ current });
   };
 
-  prev = () => {
+  prev = (formKey, values) => {
     const current = this.state.current - 1;
     this.setState({ current });
+    saveFormData(formKey, values);
   };
 
   savePersonalInfoForm = (values) => {
-    this.setState({ personalInfoForm: values });
+    saveFormData(RegisterView.formKeys.personalInfo, values);
     this.next();
   };
 
   saveServiceForm = (values) => {
-    this.setState({ serviceForm: values });
+    saveFormData(RegisterView.formKeys.service, values);
     this.next();
   };
 
   saveTrainerForm = (values) => {
+    saveFormData(RegisterView.formKeys.trainer, values);
     this.createUser(values);
   };
 
   createUser = ({ firstName, lastName, phoneNumber, email, startsAt, endsAt, workingDays }) => {
     const { createUserMutation, history } = this.props;
-    const { personalInfoForm, serviceForm } = this.state;
+    const personalInfoForm = getFormData(RegisterView.formKeys.personalInfo);
+    const serviceForm = getFormData(RegisterView.formKeys.service);
 
     const scheduleVariables = {
       startsAt: (startsAt.hour() * 60) + startsAt.minute(),
@@ -176,7 +201,7 @@ class RegisterView extends Component {
       <Layout style={{ minHeight: '100vh', backgroundColor: 'transparent' }}>
         <div>
           <Header>
-            <h4 style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.67)' }}>REGISTER</h4>
+            <HeaderText>REGISTER</HeaderText>
           </Header>
           <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
             <Steps current={current} style={{ marginBottom: '24px' }}>

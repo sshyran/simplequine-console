@@ -180,7 +180,7 @@ class TrainerForm extends Component {
         </FormItem>
         <FormItem {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" size="large" style={{ marginRight: '15px' }}>Submit</Button>
-          <Button size="large" onClick={this.props.onPreviousClick}>Previous</Button>
+          <Button size="large" onClick={() => this.props.onPreviousClick(this.props.form.getFieldsValue())}>Previous</Button>
         </FormItem>
       </Form>
     );
@@ -190,6 +190,7 @@ class TrainerForm extends Component {
 TrainerForm.propTypes = {
   form: PropTypes.shape({
     getFieldDecorator: PropTypes.func.isRequired,
+    getFieldsValue: PropTypes.func.isRequired,
     validateFieldsAndScroll: PropTypes.func.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,

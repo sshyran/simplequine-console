@@ -3,11 +3,11 @@ import { graphql, compose } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 /* App modules */
-import SuccessView from './view';
-import { userIdQuery } from '../../../../shared/queries/user';
+import SuccessView from '../views/success';
+import userQuery from '../network/userQuery';
 
 const SuccessContainer = compose(
-  graphql(userIdQuery, {
+  graphql(userQuery, {
     options: { fetchPolicy: 'network-only' },
   }),
 )(withRouter(SuccessView));

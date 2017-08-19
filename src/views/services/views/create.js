@@ -1,5 +1,5 @@
 /* 3rd party modules */
-import { Col, Row, Layout, Spin, notification } from 'antd';
+import { Col, Row, Layout, notification } from 'antd';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 /* App modules */
 import ServiceForm from '../components/form';
 import HeaderText from '../../../shared/components/headerText';
+import Placeholder from '../../../shared/components/placeholder';
 
 const { Header, Content } = Layout;
 
@@ -51,11 +52,7 @@ class CreateServiceView extends Component {
           <Header>
             <HeaderText>CREATE SERVICE</HeaderText>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
-            <Spin />
-          </Content>
+          <Placeholder />
         </div>
       );
     }

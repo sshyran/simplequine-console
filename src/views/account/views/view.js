@@ -1,5 +1,5 @@
 /* 3rd party modules */
-import { Col, Row, Layout, Spin } from 'antd';
+import { Col, Row, Layout } from 'antd';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -7,9 +7,10 @@ import { Redirect } from 'react-router-dom';
 /* App modules */
 import AccountForm from '../../../shared/components/accountForm';
 import HeaderText from '../../../shared/components/headerText';
+import Placeholder from '../../../shared/components/placeholder';
 import { openNotificationWithIcon } from '../../../shared/services/notifications';
 
-const { Header, Content } = Layout;
+const { Content, Header } = Layout;
 
 class CreateTrainerView extends Component {
   updateUser = ({ email, name, daysInAdvance, timeZoneName }) => {
@@ -42,11 +43,7 @@ class CreateTrainerView extends Component {
           <Header>
             <HeaderText>ACCOUNT</HeaderText>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
-            <Spin />
-          </Content>
+          <Placeholder />
         </div>
       );
     }

@@ -1,13 +1,14 @@
 /* eslint-disable */
 
 /* 3rd party modules */
-import { Col, Row, Layout, Spin, Button } from 'antd';
+import { Col, Row, Layout, Button } from 'antd';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 /* App modules */
 import HeaderText from '../../../shared/components/headerText';
+import Placeholder from '../../../shared/components/placeholder';
 
 const { Header, Content } = Layout;
 
@@ -21,11 +22,7 @@ class SuccessView extends Component {
           <Header>
             <HeaderText>ACCOUNT</HeaderText>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
-            <Spin />
-          </Content>
+          <Placeholder />
         </div>
       );
     }

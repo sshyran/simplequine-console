@@ -1,11 +1,12 @@
 /* 3rd party modules */
-import { Col, Row, Layout, Card, Popconfirm, Button, Spin, notification } from 'antd';
+import { Col, Row, Layout, Card, Popconfirm, Button, notification } from 'antd';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 /* App modules */
 import HeaderText from '../../../shared/components/headerText';
+import Placeholder from '../../../shared/components/placeholder';
 
 const { Header, Content } = Layout;
 
@@ -40,11 +41,7 @@ class ServiceListView extends Component {
           <Header>
             <HeaderText>SERVICE LIST</HeaderText>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
-            <Spin />
-          </Content>
+          <Placeholder />
         </div>
       );
     }

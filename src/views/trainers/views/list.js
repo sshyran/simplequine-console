@@ -1,5 +1,5 @@
 /* 3rd party modules */
-import { Col, Row, Layout, Button, Spin } from 'antd';
+import { Col, Row, Layout, Button } from 'antd';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -11,6 +11,7 @@ import TrainerCard from '../components/card';
 import { getStartOfToday } from '../services/time';
 import FlexItem from '../../../shared/components/flexItem';
 import HeaderText from '../../../shared/components/headerText';
+import Placeholder from '../../../shared/components/placeholder';
 
 const { Header, Content } = Layout;
 
@@ -48,11 +49,7 @@ class TrainerListView extends Component {
               </HeaderText>
             </FlexItem>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
-            <Spin />
-          </Content>
+          <Placeholder />
         </div>
       );
     }

@@ -1,5 +1,5 @@
 /* 3rd party modules */
-import { Calendar, Col, Row, Spin, Table, Layout } from 'antd';
+import { Calendar, Col, Row, Table, Layout } from 'antd';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -10,6 +10,7 @@ import Event from '../components/event';
 import { getAppointmentsForRendering } from '../services/calendar';
 import { createTableData } from '../services/table';
 import HeaderText from '../../../shared/components/headerText';
+import Placeholder from '../../../shared/components/placeholder';
 
 const { Header, Content } = Layout;
 
@@ -92,11 +93,7 @@ class ScheduleView extends Component {
           <Header>
             <HeaderText>SCHEDULE</HeaderText>
           </Header>
-          <Content
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 64px)' }}
-          >
-            <Spin />
-          </Content>
+          <Placeholder />
         </div>
       );
     }

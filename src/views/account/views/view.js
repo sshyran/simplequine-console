@@ -77,7 +77,7 @@ class CreateTrainerView extends Component {
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
                 }}
-                href={`https://book.${window.location.host}.com/${user.id}`}
+                href={`https://book.${window.location.host}/${user.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
